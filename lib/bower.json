@@ -1,0 +1,23 @@
+{
+  "name": "modules",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Carmen Vazquez-Marin <vazquecm@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vazquecm/cbs-moviehistory",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "requirejs": "~2.1.21",
+    "bootstrap": "~3.3.5"
+  }
+}
