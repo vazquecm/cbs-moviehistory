@@ -18,6 +18,9 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "requirejs": "~2.1.21",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "firebase": "~2.3.2",
+    "lodash": "~3.10.1",
+    "q": "~2.0.2"
   }
 }
