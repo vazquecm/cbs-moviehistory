@@ -17,7 +17,13 @@
     "handlebars": "~4.0.4",
     "jquery": "~2.1.4",
     "require-handlebars-plugin": "~1.0.0",
-    "requirejs": "~2.1.21"
+    "requirejs": "~2.1.21",
+    "bootstrap": "~3.3.5",
+    "firebase": "~2.3.2",
+    "lodash": "~3.10.1",
+    "q": "~2.0.2"
   },
   "version": "0.0.0"
-}
+  }
+
+
