@@ -1,4 +1,35 @@
+
 body {
-	background-color: lightgray;
+  background-color: gray; 
 }
+
+#splash_panel {
+	/*border: 2px solid black;*/
+    width: 300px;
+    padding: 25px;
+    border: 20px solid black;
+    margin: 25px;
+    font-size: 25px;
+}
+
+#login_panel {
+	width: 300px;
+	border: 20px solid black;
+	margin: 25px;
+	padding: 25px;
+	font-size: 20px;
+	display: none;
+}
+
+#register_panel {
+	width: 300px;
+	border: 20px solid black;
+	margin: 25px;
+	padding: 25px;
+	font-size: 20px;
+	display: none;
+}
+
+/*# sourceMappingURL=main.css.map */
+
 

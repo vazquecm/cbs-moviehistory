@@ -3,15 +3,19 @@
 define(["jquery", "firebase", "q"], 
 function ($, firebase, Q) {
 
-	return function(returnedUid){
+	return function(){
 	//// this (returnedUid) data is not currently used just here in case its needed///	
 
-		//get email and password
-		var enteredEmail = $("#email").val();
-		var enteredPassword = $("#password").val();
-
-		//create differed object for promise
+	//create differed object for promise
 		 	var deferred = Q.defer();
+
+		//get email and password
+		var enteredEmail = $("#logInEmail").val();
+		var enteredPassword = $("#logInPassword").val();
+
+		if (enteredEmail === "" && enteredPassword === ""){
+			console.log("email and password need to be entered");
+		} else {
 
 		//reference app firebase data location
 		var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/");
@@ -40,10 +44,10 @@ function ($, firebase, Q) {
 		  }
 
 		});
-
+}
 		//return state of promse
 		return deferred.promise;
 
-	}	
+	};	
 
 });

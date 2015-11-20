@@ -8,25 +8,29 @@ function ($, firebase, Q) {
 		//create differed object for promise
 		 	 var deferred = Q.defer();
 
-		//reference app data location in firebase
+		//reference app data location in firebase database ///
 		var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/");
+		//getting email and password from input fields ///
+		var enteredEmail = $("#registerEmail").val();
+			console.log("enteredEmail", enteredEmail);
+		var enteredPassword = $("#registerPassword").val();
+			console.log("enteredPassword", enteredPassword);
+		var confirmPassword = $("#confirmPassword").val();
+			console.log("confirmPassword", confirmPassword);
 
-		//get email and password from input fields
-		var enteredEmail = $("#email").val();
-		var enteredPassword = $("#password").val();
+			if (enteredEmail === "" && enteredPassword === ""){
+				console.log("nothing entered");
+			} else {
+					if (enteredPassword !== confirmPassword){
+						console.log("passwords don't match");
+					}
+					else {
+						console.log("yay!");
 
-		console.log("enteredEmail", enteredEmail);
-		console.log("enteredPassword", enteredPassword);
+						ref.createUser({
 
-	/*
-		create user for entry into firebase by running .createUser() method on Firebase object 
-		(this is the "ref" variable above). (.createUser() is a method given to us by firebase)
-	*/
-
-		ref.createUser({
-
-		  email    : enteredEmail,
-		  password : enteredPassword
+		  				email    : enteredEmail,
+		  				password : enteredPassword
 
 
 		}, function(error, userData) {
@@ -46,13 +50,13 @@ function ($, firebase, Q) {
 		    var currentUserUid = userData.uid;
 
 		    //create reference to userUid object that is inside "Users" object in firebase (we are basically setting/creating this here)
-			    /*
-			    human language: go get all firebase data,
-			    				go into the "Users" object,
-			    				go into/ create a child object inside "Users" with the key I give you 
-			    				(in this case we are giving it the currentUserUid as the key name)
+			    
+			    // human language: go get all firebase data,
+			    // 				go into the "Users" object,
+			    // 				go into/ create a child object inside "Users" with the key I give you 
+			    // 				(in this case we are giving it the currentUserUid as the key name)
 
-			    */
+			    
 		    var userRef = ref.child("Users").child(currentUserUid);
 
 		    //create new user key on users object, give this user key all data keys we will need (this logic is setting the firebase key and the user uid to the same reference) ///
@@ -66,7 +70,7 @@ function ($, firebase, Q) {
     				unwatched:{
     					exampleTitleOfUnwatched: "example"
     				}
-		    	})
+		    	});
 
 			  	//resolve the promise with this deferred object
 			 	   deferred.resolve(currentUserUid);
@@ -79,5 +83,15 @@ function ($, firebase, Q) {
 		    //return state of promise
 		    return deferred.promise;
 	}	
+					}
+			};
+
+
+	/*
+		create user for entry into firebase by running .createUser() method on Firebase object 
+		(this is the "ref" variable above). (.createUser() is a method given to us by firebase)
+	*/
+
+		
 
 });
