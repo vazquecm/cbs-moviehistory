@@ -26,12 +26,23 @@ require(["jquery", "loginAuth", "createUserInFirebase", "q" ],
  	
  	//call createUserInFirebase.js module when create button is clicked
  	$("#createButton").click(function(){
+
+ 		//run createUserInFirebase.js module
 	 	createUserInFirebase()
+
+	 	//after promise is returned from createUserInFirebase.js 
 	 	.then(function(returnedUid){
+	 		//returnedUID above ^^ returns uid of current created user
+
 	 		alert("congrats");
 
+	 		//attach event handler to login button for testing (this needs to be refactored to happen as an option instead of having to create new user)
 	 		$("#loginButton").click(function(){
+
+	 			//call loginAuth.js module and pass in the uid of current user
 	 			loginAuth(returnedUid)
+
+	 			//when promise is returned from loginAuth.js
 	 			.then(function(){
 	 				alert("logged in");
 	 			});
