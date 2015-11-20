@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CBS-Movie History</title>
+  <link href="./lib/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        <!-- This is the Find Movie button that is set up as a modal button for testing -->
+          <li class="active">
+          <button type="button" data-toggle="modal" data-target="#myModal">Find Movies</button>
+          </li>
+          <li><a href="#">Search Movies</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Log Out</a></li>  
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- This is the modal page that will appear when the "add file is selected" -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" </div>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Find movie to add</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" name="movie-title" value="Enter Title Here">
+          <button type="button" class="search-btn">Search</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- This is the code to test the tile HTMl for the movie posters -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-3"><a href="#">Watched</a>  | <a href="#">Unwatched</a>
+      <div class="col-md-6"></div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-3">
+        <ul class="movies img-wrap">
+          <li><span class="close">&times;</span><img src="http://www.freedesign4.me/wp-content/gallery/posters/free-movie-film-poster-the_dark_knight_movie_poster.jpg" height="225" width="175"></li>
+          <li><button type="button">Watched</button></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="movies img-wrap">
+          <li><span class="close">&times;</span><img src="http://www.freedesign4.me/wp-content/gallery/posters/free-movie-film-poster-the_dark_knight_movie_poster.jpg" height="225" width="175"></li>
+          <li><button type="button">Watched</button></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="movies img-wrap">
+          <li><span class="close">&times;</span><img src="http://www.freedesign4.me/wp-content/gallery/posters/free-movie-film-poster-the_dark_knight_movie_poster.jpg" height="225" width="175"></li>
+          <li><button type="button">Watched</button></li>
+        </ul>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>   
+  <!-- END CONTAINER FLUID FOR MOVIE TILE -->
+
+  <!-- ******** Main container ********** -->
+    <!-- <div id="mainContainer"> -->
+    <!-- </div> -->
+
+
+
+  <script src="lib/bower_components/requirejs/require.js" type="text/javascript" data-main="javascripts/entry.js"></script>
+</body>
+</html>

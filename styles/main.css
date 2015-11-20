@@ -1,4 +1,16 @@
 body {
-  background-color: gray; }
+  background-color: orange; }
 
 /*# sourceMappingURL=main.css.map */
+
+.img-wrap {
+    position: relative;
+}
+
+/*.img-wrap  {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+}
+*/
