@@ -4,7 +4,7 @@ define(["jquery", "firebase", "q"],
 function ($, firebase, Q) {
 
 	return function(returnedUid){
-
+	//// this (returnedUid) data is not currently used just here in case its needed///	
 
 		//get email and password
 		var enteredEmail = $("#email").val();

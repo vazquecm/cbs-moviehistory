@@ -55,7 +55,7 @@ function ($, firebase, Q) {
 			    */
 		    var userRef = ref.child("Users").child(currentUserUid);
 
-		    //create new user key on users object, give this user key all data keys we will need
+		    //create new user key on users object, give this user key all data keys we will need (this logic is setting the firebase key and the user uid to the same reference) ///
 		    userRef.set({
 		    		uid: currentUserUid,
     				watched: {
@@ -68,7 +68,7 @@ function ($, firebase, Q) {
     				}
 		    	})
 
-			  	//resolve deferred object
+			  	//resolve the promise with this deferred object
 			 	   deferred.resolve(currentUserUid);
 
 		    }
