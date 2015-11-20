@@ -1,3 +1,20 @@
 body {
-	background-color: gray;
+	background-color: orange;
+}
+
+
+.img-wrap {
+    position: relative;
+}
+.img-wrap .close {
+	color:	white;
+	font-weight: bold;
+    position: absolute;
+    right: 150px;
+    top: 2px;
+    z-index: 100;
+}
+
+.star-1 {
+	color: blue;
 }
