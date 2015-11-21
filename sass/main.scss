@@ -34,6 +34,25 @@ body {
 	margin-top: 50px;
 }
 
+.movies_btn{
+	height: 33px;
+}
+
+#filters{
+	display: block;
+
+	li{
+	display: inline-block;
+	border-left: 2px solid black;
+	padding: 5px;
+	cursor: pointer;
+
+		&:first-of-type{
+		border-left: 0px;
+		}
+	}
+}
+
 /*# sourceMappingURL=main.css.map */
 
 
