@@ -15,9 +15,9 @@
         <ul class="nav navbar-nav">
         <!-- This is the Find Movie button that is set up as a modal button for testing -->
           <li class="active">
-          <button type="button" data-toggle="modal" data-target="#myModal">Find Movies</button>
+          <button type="button" id="find_movies_btn">Find Movies</button>
           </li>
-          <li><a href="#">Search Movies</a></li>
+          <button id="search_movies_btn">Search Movies</button>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Log Out</a></li>  
@@ -26,52 +26,30 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+  <div id="main_ouput">
+    
+
+  </div>
 
   <!-- This is the modal page that will appear when the "add file is selected" -->
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" </div>
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Find movie to add</h4>
-        </div>
-        <div class="modal-body">
-          <input type="text" name="movie-title" value="Enter Title Here">
-          <button type="button" class="search-btn">Search</button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <div class="modal fade" id="find_movies_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">My Response</h4>
+          </div>
+          <div class="modal-body">
+            <input id="find_move_input" type="text" placeholder="Title">
+          </div>
+          <div class="modal-footer">
+  
+            <button type="button" id="search_for_movies" class="btn btn-primary" data-dismiss="modal">Search</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
   <!-- This is the code to test the tile HTMl for the movie posters -->
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-3"><a href="#">Watched</a>  | <a href="#">Unwatched</a></div>
-      <div class="col-md-8"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-3 col-md-offset-1">
-          <div class="movies img-wrap">
-            <img src="http://www.freedesign4.me/wp-content/gallery/posters/free-movie-film-poster-the_dark_knight_movie_poster.jpg" height="300" width="250"><span class="close">x</span>
-          </div> 
-          <div class="watched"><button type="button">Watched</button></div>
-          <div>
-            <span class="glyphicon glyphicon-star star-1" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-star star-2" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-star star-3" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-star star-4" aria-hidden="true"></span>
-            <span class="glyphicon glyphicon-star star-5" aria-hidden="true"></span>
-          </div>
-      </div>
-      <div class="col-md-8"></div>
-    </div>
-  </div>   
-  <!-- END CONTAINER FLUID FOR MOVIE TILE -->

@@ -62,14 +62,7 @@ function ($, firebase, Q) {
 		    //create new user key on users object, give this user key all data keys we will need (this logic is setting the firebase key and the user uid to the same reference) ///
 		    userRef.set({
 		    		uid: currentUserUid,
-    				watched: {
-    					examplemovieTitle:{
-    						rating: 3
-    					}
-    				},
-    				unwatched:{
-    					exampleTitleOfUnwatched: "example"
-    				}
+    				movies: {}
 		    	});
 
 			  	//resolve the promise with this deferred object

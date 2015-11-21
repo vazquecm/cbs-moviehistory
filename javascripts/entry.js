@@ -22,8 +22,8 @@ requirejs.config({
 
 //, createUserInFirebase, Q
 
-require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth"], 
-  function($, _, Q, createUserInFirebase, loginAuth) {
+require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser"], 
+  function($, _, Q, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser) {
 
 
   	/// inject splash.hbs template to the index.html page ///
@@ -47,6 +47,9 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth"],
                   $("#mainContainer").html(logInTemplate());
                  
                 });
+
+  			console.log("user object: ", generalVariables.getCurrentUser());
+  			console.log("user uid: ", generalVariables.getCurrentUid());
 
   		});
   	});
@@ -110,6 +113,55 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth"],
 	 		});
 	 	});
  	});
+
+ 	//To be modularized, but for now this handles querying API for movies and output
+ 	$("body").on("click", "#find_movies_btn", function(){
+  		$("#find_movies_modal").modal();
+
+  		//User enters title and searches
+  		$("body").on("click", "#search_for_movies", function(){
+
+	  		//Api returns movie data
+  			getMoviesFromAPI()
+
+	  		//output data via hbs file
+  			.then(function(data){
+
+  				//set the current movie
+  				generalVariables.setCurrentMovieReturned(data);
+
+  				console.log("currentMoveReturned: ", generalVariables.getCurrentMovieReturned());
+
+  				console.log("checking data", data);
+  				require(["hbs!../templates/findMovies"], function(logInTemplate){
+                  $("#main_ouput").html(logInTemplate(data));
+                 
+                });
+
+  				//remove extra modal styling if modal styling not cleared
+                $(".modal-backdrop").remove();
+                $("body").removeClass("modal-open");
+
+  			});
+  		});
+
+  	});
+
+  	//To be modularized, but currently handles adding a movie to firebase list
+ 	$("body").on("click", "#add_movie_button", function(){
+  		
+  		//add movie to users movies list
+ 		addMovieToUser();
+
+  	});
+
+
+  	//event handler for searchMovies clicke
+  	$("body").on("click", "#search_movies_btn", function(){
+  		console.log("search them movies");
+  	});
+
+
 
   }
 );

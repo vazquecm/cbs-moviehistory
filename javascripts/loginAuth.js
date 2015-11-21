@@ -1,7 +1,7 @@
 //This module returns a function that handles logging into app through email authentication through firebase
 
-define(["jquery", "firebase", "q"], 
-function ($, firebase, Q) {
+define(["jquery", "firebase", "q", "generalVariables"], 
+function ($, firebase, Q, generalVariables) {
 
 	return function(){
 	//// this (returnedUid) data is not currently used just here in case its needed///	
@@ -37,6 +37,11 @@ function ($, firebase, Q) {
 		  } else {
 
 		    console.log("Authenticated successfully with payload:", authData);
+
+		    //set current user and current user uid for use in other modules
+		    generalVariables.setCurrentUser(authData);
+		    generalVariables.setCurrentUid(authData.uid);
+
 
 		    //resolve promise
 		    deferred.resolve();
