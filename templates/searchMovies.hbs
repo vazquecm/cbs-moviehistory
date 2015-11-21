@@ -1,9 +1,33 @@
 <div class="container-fluid">
+	<ul>
+		<li>Watched</li>
+		<li>Unwatched</li>
+	</ul>
+
     <div class="row">
     	{{!-- for each movie on user, add a column for it --}}
-    	<div class="col-md-3 col-md-offset-1">
-    		<img src="#"/>
-    		<button>do Something</button>
+    	{{#each this}}
+    	<div id="title_{{this.movieName}}" class="col-md-3 col-md-offset-1 movieOutput">
+    		<div class="movies img-wrap">
+            <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250"><span class="close">x</span>
+          </div> 
+
+	          {{#if this.watched}}
+		          {{!-- <div>
+		            <span class="glyphicon glyphicon-star star-1" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-star star-2" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-star star-3" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-star star-4" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-star star-5" aria-hidden="true"></span>
+		          </div> --}}
+		          <button type="button">stars div here</button>
+	          {{else}}
+	          	<button type="button">Watched</button>
+	          {{/if}}
+
     	</div>
+
+         {{/each}}
+		{{!-- end else --}}
     </div>
 </div

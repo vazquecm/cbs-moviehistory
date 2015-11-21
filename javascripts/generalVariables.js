@@ -6,6 +6,7 @@ function ($) {
 	var currentUid;
 	var currentUser;
 	var currentMovieReturned;
+	var currentUserMovies;
 
 
 	//return an objected with various getters and setters
@@ -33,6 +34,14 @@ function ($) {
 
 		setCurrentMovieReturned : function(value){
 			currentMovieReturned = value;
+		},
+
+		getCurrentUserMovies: function(){
+			return currentUserMovies;
+		},
+
+		setCurrentUserMovies: function(value){
+			currentUserMovies = value;
 		}
 
 	}

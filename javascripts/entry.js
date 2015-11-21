@@ -22,8 +22,8 @@ requirejs.config({
 
 //, createUserInFirebase, Q
 
-require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser"], 
-  function($, _, Q, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser) {
+require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
+  function($, _, Q, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
 
 
   	/// inject splash.hbs template to the index.html page ///
@@ -159,6 +159,17 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstra
   	//event handler for searchMovies clicke
   	$("body").on("click", "#search_movies_btn", function(){
   		console.log("search them movies");
+  		searchUserMovies()
+  		.then(function(){
+  			console.log("its time to see current user movies ", generalVariables.getCurrentUserMovies());
+
+  			require(["hbs!../templates/searchMovies"], function(logInTemplate){
+                  $("#main_ouput").html(logInTemplate(generalVariables.getCurrentUserMovies()));
+                 });
+  	
+
+  		});
+
   	});
 
 
