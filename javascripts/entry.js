@@ -166,12 +166,21 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstra
   			require(["hbs!../templates/searchMovies"], function(logInTemplate){
                   $("#main_ouput").html(logInTemplate(generalVariables.getCurrentUserMovies()));
                  });
-  	
-
   		});
-
   	});
 
+    //functionality that needs to be modularized, but handles filtering for watched movies
+    $("body").on("click", "#watched_filter", function(){
+        console.log("filterwatched now");
+        $("#main_ouput .row").children(".unwatched").hide();
+        $("#main_ouput .row").children(".watched").show();
+    });
+
+    $("body").on("click", "#unwatched_filter", function(){
+        console.log("filterwatched now");
+        $("#main_ouput .row").children(".watched").hide();
+        $("#main_ouput .row").children(".unwatched").show();
+    })  
 
 
   }
