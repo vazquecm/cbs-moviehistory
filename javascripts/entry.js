@@ -22,8 +22,8 @@ requirejs.config({
 
 //, createUserInFirebase, Q
 
-require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
-  function($, _, Q, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
+require(["jquery", "firebase", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
+  function($, firebase,  _, Q, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
 
 
   	/// inject splash.hbs template to the index.html page ///
@@ -186,7 +186,15 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstra
     //functionality that needs to be modularized, but handles functionality for changing unwatched movies to watched
     $("body").on("click", ".watched_movies_btn", function(){
       console.log("now this should switch to watched");
+      
+      //get title to check against firebase
+      var titleToCheck = $(this).parent().children("span")[0].innerHTML;
 
+      //update unwatched class to watched
+      $(this).parent().removeClass("unwatched");
+      $(this).parent().addClass("watched");
+
+      //save parent if
       var parent = $(this).parent().attr("id");
 
       console.log("parent", parent);
@@ -199,8 +207,26 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstra
 
       // remove watched_movies_btn
       $(this).hide();
+
+      //needs to be modular but this will edit data in firebase
+      var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid());
+
+
+      //go into current users movies to the "watched" key of the movie that was clicked on
+      watchedToUpdate = ref.child("movies").child(titleToCheck);
+
+      watchedToUpdate.update({
+        "watched":"true"
+      });
+
+
+
     });
 
 
   }
 );
+
+
+
+
