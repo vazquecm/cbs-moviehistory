@@ -7,7 +7,11 @@
     <div class="row">
     	{{!-- for each movie on user, add a column for it --}}
     	{{#each this}}
-    	<div id="title_{{this.movieName}}" class="col-md-3 col-md-offset-1 movieOutput {{#if this.watched}}watched{{else}}unwatched{{/if}}">
+    	<div id="title_{{this.imdbID}}" class="col-md-3 col-md-offset-1 movieOutput {{#if this.watched}}
+    	watched{{else}}unwatched{{/if}}">
+
+		{{!-- this is a hidden span, to help search firebase --}}
+			<span class="hiddenSpanId">{{this.movieName}}</span>
     		<div class="movies img-wrap">
             <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250"><span class="close">x</span>
           </div> 
@@ -21,7 +25,7 @@
 		            <span class="glyphicon glyphicon-star star-5" aria-hidden="true"></span>
 		          </div>
 	          {{else}}
-	          	<button class="btn movies_btn" type="button">Watched</button>
+	          	<button class="btn movies_btn watched_movies_btn" type="button">Watched</button>
 	          {{/if}}
 
     	</div>

@@ -176,11 +176,30 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstra
         $("#main_ouput .row").children(".watched").show();
     });
 
+    //functionality that needs to be modularized, but handles filtering for unwatched movies
     $("body").on("click", "#unwatched_filter", function(){
         console.log("filterwatched now");
         $("#main_ouput .row").children(".watched").hide();
         $("#main_ouput .row").children(".unwatched").show();
-    })  
+    });  
+
+    //functionality that needs to be modularized, but handles functionality for changing unwatched movies to watched
+    $("body").on("click", ".watched_movies_btn", function(){
+      console.log("now this should switch to watched");
+
+      var parent = $(this).parent().attr("id");
+
+      console.log("parent", parent);
+      
+      //append star div
+      require(["hbs!../templates/appendStars"], function(template){
+        console.log("inside func");
+                    $("#"+parent).append(template());
+                 });
+
+      // remove watched_movies_btn
+      $(this).hide();
+    });
 
 
   }
