@@ -47,6 +47,9 @@ body {
 .color_star_rating {
   color: yellow; }
 
+.hiddenSpanRating, .hiddenSpanId {
+  display: none; }
+
 /*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */
