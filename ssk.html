@@ -1,4 +1,14 @@
-<nav class="navbar navbar-default">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CBS-Movie History</title>
+  <link href="./lib/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -15,7 +25,7 @@
         <ul class="nav navbar-nav">
         <!-- This is the Find Movie button that is set up as a modal button for testing -->
           <li class="active">
-          <button type="button" id="find-movies">Find Movies</button>
+          <button type="button" data-toggle="modal" data-target="#myModal">Find Movies</button>
           </li>
           <li><a href="#">Search Movies</a></li>
         </ul>
@@ -29,7 +39,7 @@
 
   <!-- This is the modal page that will appear when the "add file is selected" -->
 
-  <!-- Modal 
+  <!-- Modal -->
   <div class="modal fade" id="myModal" </div>
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -38,7 +48,6 @@
           <h4 class="modal-title" id="myModalLabel">Find movie to add</h4>
         </div>
         <div class="modal-body">
-          <h2>STuff should go here!!</h2>
           <input type="text" name="movie-title" value="Enter Title Here">
           <button type="button" class="search-btn">Search</button>
         </div>
@@ -48,10 +57,6 @@
       </div>
     </div>
   </div>
-
--->
-
-
 
   <!-- This is the code to test the tile HTMl for the movie posters -->
 
@@ -65,8 +70,7 @@
       <div class="col-md-2"></div>
       <div class="col-md-3 col-md-offset-1">
           <div class="movies img-wrap">
-            <p>{{this.Title}}</p>
-            <img src="{{this.Poster}}" height="300" width="250"><span class="close">x</span>
+            <img src="http://www.freedesign4.me/wp-content/gallery/posters/free-movie-film-poster-the_dark_knight_movie_poster.jpg" height="300" width="250"><span class="close">x</span>
           </div> 
           <div class="watched"><button type="button">Watched</button></div>
           <div>
@@ -81,3 +85,13 @@
     </div>
   </div>   
   <!-- END CONTAINER FLUID FOR MOVIE TILE -->
+
+  <!-- ******** Main container ********** -->
+    <!-- <div id="mainContainer"> -->
+    <!-- </div> -->
+
+
+<!--
+  <script src="lib/bower_components/requirejs/require.js" type="text/javascript" data-main="javascripts/entry.js"></script>  -->
+</body>
+</html>

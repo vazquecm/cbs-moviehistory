@@ -22,8 +22,8 @@ requirejs.config({
 
 //, createUserInFirebase, Q
 
-require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth"], 
-  function($, _, Q, createUserInFirebase, loginAuth) {
+require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth", "searchAPI_ssk"], 
+  function($, _, Q, createUserInFirebase, loginAuth, searchAPI) {
 
 
   	/// inject splash.hbs template to the index.html page ///
@@ -72,44 +72,65 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth"],
                 });
 	 			require(["hbs!../templates/successfulRegister"], function(logInTemplate){
                   $("#register_panel").prepend(logInTemplate());
-                 
                 });
-	 		});
+      });
 
 
-  	});
+    });
 
-  	$("body").on("click", "#registerPanelLogIn", function(){
-  		console.log("here we should run log in module");
-  		$("#register_panel").hide();
-  		$("#login_panel").fadeIn("slow");
-  	});
- 	
- 	//call createUserInFirebase.js module when create button is clicked
- 	$("#createButton").click(function(){
+    $("body").on("click", "#registerPanelLogIn", function(){
+      console.log("here we should run log in module");
+      $("#register_panel").hide();
+      $("#login_panel").fadeIn("slow");
+    });
+  
+  //call createUserInFirebase.js module when create button is clicked
+  $("#createButton").click(function(){
 
- 		//run createUserInFirebase.js module
-	 	createUserInFirebase()
+    //run createUserInFirebase.js module
+    createUserInFirebase()
 
-	 	//after promise is returned from createUserInFirebase.js 
-	 	.then(function(returnedUid){
-	 		//returnedUID above ^^ returns uid of current created user
+    //after promise is returned from createUserInFirebase.js 
+    .then(function(returnedUid){
+      //returnedUID above ^^ returns uid of current created user
 
-	 		alert("congrats");
+      alert("congrats");
 
-	 		//attach event handler to login button for testing (this needs to be refactored to happen as an option instead of having to create new user)
-	 		$("#loginButton").click(function(){
+      //attach event handler to login button for testing (this needs to be refactored to happen as an option instead of having to create new user)
+      $("#loginButton").click(function(){
 
-	 			//call loginAuth.js module and pass in the uid of current user
-	 			loginAuth(returnedUid)
+        //call loginAuth.js module and pass in the uid of current user
+        loginAuth(returnedUid)
 
-	 			//when promise is returned from loginAuth.js
-	 			.then(function(){
-	 				alert("logged in");
-	 			});
-	 		});
-	 	});
- 	});
+        //when promise is returned from loginAuth.js
+        .then(function(){
+          alert("logged in");
+        });
+      });
+    });
+  });
 
-  }
-);
+  //listen for the add button and display modal page if clicked
+  $("body").on("click", "#find-movies", function(){
+    console.log("heard the find button!!");
+        require(["hbs!../templates/addMovies"], function(logInTemplate){                 
+            $("#mainContainer").html(logInTemplate());
+          });
+  });
+
+//Listen for the search button to be clicked and then get the movie title and pass to module to call DB
+  $("body").on("click", "#search-btn", function(){
+    console.log("heard the search!!");
+    titleToAdd = $("#movie-title").val();
+    console.log("title to add ", titleToAdd);
+    searchAPI(titleToAdd)
+    .then(function(movieData){
+      console.log("Poster came back!! ", movieData);
+      // make the call to format the HBS to display the movie poster
+      require(["hbs!../templates/main"], function(logInTemplate){                 
+        $("#mainContainer").html(logInTemplate());
+      });
+    });
+  });
+
+});
