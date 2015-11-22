@@ -50,6 +50,15 @@ body {
 .hiddenSpanRating, .hiddenSpanId {
   display: none; }
 
+.img-wrap {
+  width: 250px;
+  position: relative; }
+  .img-wrap span {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer; }
+
 /*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */

@@ -67,6 +67,18 @@ body {
 	display: none;
 }
 
+.img-wrap{
+	width: 250px;
+	position: relative;
+
+	span{
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		cursor: pointer;
+	}
+}
+
 /*# sourceMappingURL=main.css.map */
 
 
