@@ -173,7 +173,7 @@ require(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserI
           //get all star button parent divs into an array
           var ratings = $(".hiddenSpanRating");
 
-          console.log("ratings", ratings);
+          // console.log("ratings", ratings);
 
           for(var i = 0; i < ratings.length; i ++){
 
@@ -185,12 +185,12 @@ require(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserI
 
             //if a movie rating is greater than zero
             if(parsedRating > 0){
-              console.log("currentdivwith rating", ratings[i]);
+              // console.log("currentdivwith rating", ratings[i]);
 
               //get id of parent div for reference
               var parentOfRating = ratings[i].parentNode.getAttribute("id");
 
-              console.log($("#"+parentOfRating).find($(".stars_btn")).children());
+              // console.log($("#"+parentOfRating).find($(".stars_btn")).children());
 
               for(var x = currentRating; x > 0; x -= 1){
 
@@ -260,7 +260,7 @@ require(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserI
 
     });
 
-    //functionality that needs to be modularized, but handles functionality for adding ratings to firebase
+    //functionality that needs to be modularized, but handles functionality for adding ratings to firebase and coloring stars after click
     $("body").on("click", ".movies_btn span", function(){
 
       //get the star-x class of each element where x is a number 1-5
@@ -285,6 +285,19 @@ require(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserI
       movieReference.update({
         "rating": finalNumber
       });
+
+      //Change css styles
+      console.log("numOfStar ", numOfStar );
+
+      console.log("this star", $(this));
+
+      //clear colors in order to update colors with for loop
+      $(this).parent().find($(".glyphicon")).css({"color": "#333"});
+
+      for( var i = finalNumber; i > 0; i -= 1){
+        console.log("i is now", i);
+        $(this).parent().find($(".star-"+i)).css({"color": "goldenrod"});      
+      }
 
 
     });
