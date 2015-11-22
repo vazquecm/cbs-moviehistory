@@ -12,12 +12,13 @@
 
 		{{!-- this is a hidden span, to help search firebase --}}
 			<span class="hiddenSpanId">{{this.movieName}}</span>
+			<span class="hiddenSpanRating">{{this.rating}}</span>
     		<div class="movies img-wrap">
             <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250"><span class="close">x</span>
           </div> 
 
 	          {{#if this.watched}}
-		          <div class="movies_btn">
+		          <div class="movies_btn stars_btn">
 		            <span class="glyphicon glyphicon-star star-1" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-star star-2" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-star star-3" aria-hidden="true"></span>

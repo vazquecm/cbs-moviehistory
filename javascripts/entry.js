@@ -22,8 +22,8 @@ requirejs.config({
 
 //, createUserInFirebase, Q
 
-require(["jquery", "firebase", "lodash", "q", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
-  function($, firebase,  _, Q, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
+require(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
+  function($, firebase,  _, Q, populateUserMovies, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
 
 
   	/// inject splash.hbs template to the index.html page ///
@@ -156,18 +156,55 @@ require(["jquery", "firebase", "lodash", "q", "createUserInFirebase", "loginAuth
   	});
 
 
-  	//event handler for searchMovies clicke
+  	//event handler for searchMovies click
   	$("body").on("click", "#search_movies_btn", function(){
   		console.log("search them movies");
   		searchUserMovies()
   		.then(function(){
   			console.log("its time to see current user movies ", generalVariables.getCurrentUserMovies());
+        
+        return populateUserMovies()
+        
+       })
 
-  			require(["hbs!../templates/searchMovies"], function(logInTemplate){
-                  $("#main_ouput").html(logInTemplate(generalVariables.getCurrentUserMovies()));
-                 });
-  		});
-  	});
+        //after movies are populated, color in appropriate star ratings
+       .then(function(){
+
+          //get all star button parent divs into an array
+          var ratings = $(".hiddenSpanRating");
+
+          console.log("ratings", ratings);
+
+          for(var i = 0; i < ratings.length; i ++){
+
+            //get inner html of span that holds rating
+            var currentRating = ratings[i].innerHTML;
+
+            //get integer value of current rating
+            var parsedRating = parseInt(currentRating);
+
+            //if a movie rating is greater than zero
+            if(parsedRating > 0){
+              console.log("currentdivwith rating", ratings[i]);
+
+              //get id of parent div for reference
+              var parentOfRating = ratings[i].parentNode.getAttribute("id");
+
+              console.log($("#"+parentOfRating).find($(".stars_btn")).children());
+
+              for(var x = currentRating; x > 0; x -= 1){
+
+              //color appropriate stars
+              $("#"+parentOfRating).find($(".stars_btn")).find($(".star-"+x)).css({"color":"goldenrod"})
+              }
+
+            }
+          }
+
+
+          });
+          
+        });
 
     //functionality that needs to be modularized, but handles filtering for watched movies
     $("body").on("click", "#watched_filter", function(){
