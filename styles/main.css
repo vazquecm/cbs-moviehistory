@@ -41,6 +41,9 @@ body {
     #filters li:first-of-type {
       border-left: 0px; }
 
+.movies_btn span {
+  cursor: pointer; }
+
 /*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */

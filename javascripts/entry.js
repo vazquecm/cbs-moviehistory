@@ -213,12 +213,41 @@ require(["jquery", "firebase", "lodash", "q", "createUserInFirebase", "loginAuth
 
 
       //go into current users movies to the "watched" key of the movie that was clicked on
-      watchedToUpdate = ref.child("movies").child(titleToCheck);
+      var watchedToUpdate = ref.child("movies").child(titleToCheck);
 
       watchedToUpdate.update({
         "watched":"true"
       });
 
+
+
+    });
+
+    //functionality that needs to be modularized, but handles functionality for adding ratings to firebase
+    $("body").on("click", ".movies_btn span", function(){
+
+      //get the star-x class of each element where x is a number 1-5
+      var currentStarRating = $(this).attr("class").split(" ")[2];
+
+      //split the string that returns the class and get only the number
+      var numOfStar = currentStarRating.split("-")[1];
+
+      //convert number to integer instead of string
+      var finalNumber = parseInt(numOfStar);
+
+      //get title of movie to add rating to
+      var movieTitle = $(this).parent().parent().children("span")[0].innerHTML;
+
+      //reference firebase location of current user
+      var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid());
+
+      //reference to current movie rated within movie object within current user
+      var movieReference = ref.child("movies").child(movieTitle);
+
+      //change rating key in firebase to whatever star number was clicked on 
+      movieReference.update({
+        "rating": finalNumber
+      });
 
 
     });
