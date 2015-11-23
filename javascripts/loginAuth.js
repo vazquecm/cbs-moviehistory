@@ -17,7 +17,7 @@ function ($, firebase, Q) {
 			console.log("email and password need to be entered");
 		} else {
 
-		//reference app firebase data location
+		//reference app firebase data location creates a new reference that allows us to access information in firebase.
 		var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/");
 
 		//run authWithPassword() method on ref variable (we can do this because ref is a firebase object)
@@ -32,6 +32,7 @@ function ($, firebase, Q) {
 		  if (error) {
 
 		    console.log("Login Failed!", error);
+		    deferred.reject();
 
 		  //if there is no error logging in
 		  } else {

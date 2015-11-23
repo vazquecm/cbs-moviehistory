@@ -47,8 +47,10 @@ require(["jquery", "lodash", "q", "createUserInFirebase", "loginAuth"],
                   $("#mainContainer").html(logInTemplate());
                  
                 });
-
-  		});
+      /// this is telling the promise what to do when it fails.  
+  		}).fail(function(){
+        alert("It didn't work!");
+      });
   	});
   	
 
