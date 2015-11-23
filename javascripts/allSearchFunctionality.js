@@ -5,8 +5,11 @@ define(["jquery", "firebase", "q", "populateUserMovies", "bootstrapJs", "searchU
 
 return function(){
 
+      // when search moves button is clicked, run searchUserMovies.js module
 	  	$("body").on("click", "#search_movies_btn", function(){
+
   		searchUserMovies()
+
   		.then(function(){
         
         return populateUserMovies()
@@ -19,8 +22,7 @@ return function(){
           //get all star button parent divs into an array
           var ratings = $(".hiddenSpanRating");
 
-          // console.log("ratings", ratings);
-
+          //for every parent div (every div in ratings)
           for(var i = 0; i < ratings.length; i ++){
 
             //get inner html of span that holds rating
@@ -31,16 +33,14 @@ return function(){
 
             //if a movie rating is greater than zero
             if(parsedRating > 0){
-              // console.log("currentdivwith rating", ratings[i]);
 
               //get id of parent div for reference
               var parentOfRating = ratings[i].parentNode.getAttribute("id");
 
-              // console.log($("#"+parentOfRating).find($(".stars_btn")).children());
 
               for(var x = currentRating; x > 0; x -= 1){
 
-              //color appropriate stars
+              //color appropriate stars by selecting each glyph with .star-x (e.g. star-1  star-2)
               $("#"+parentOfRating).find($(".stars_btn")).find($(".star-"+x)).css({"color":"goldenrod"})
               }
 

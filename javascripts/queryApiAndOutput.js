@@ -1,28 +1,31 @@
 
-//This module handles querying the api with a movie title and outputting results
+//This module handles querying the api with a movie title and outputting results when find movies button is clicked
 
 define(["jquery", "firebase", "q", "bootstrapJs", "getMoviesFromAPI", "generalVariables"], 
   function($, firebase, Q,  bootstrapJs, getMoviesFromAPI, generalVariables) {
 
 return function(){
+
+  //when find movies button is clicked, show find movies modal
   $("body").on("click", "#find_movies_btn", function(){
   		$("#find_movies_modal").modal();
 
-  		//User enters title and searches
+  		//User enters title and clicks search button
   		$("body").on("click", "#search_for_movies", function(){
 
 	  		//Api returns movie data
   			getMoviesFromAPI()
 
+        //when data is returned
+        .then(function(data){
+
+          //set the current movie for use in other modules via generalVariables
+          generalVariables.setCurrentMovieReturned(data);
+
+          console.log("currentMoveReturned: ", generalVariables.getCurrentMovieReturned());
+          console.log("checking data", data);
+
 	  		//output data via hbs file
-  			.then(function(data){
-
-  				//set the current movie
-  				generalVariables.setCurrentMovieReturned(data);
-
-  				console.log("currentMoveReturned: ", generalVariables.getCurrentMovieReturned());
-
-  				console.log("checking data", data);
   				require(["hbs!../templates/findMovies"], function(logInTemplate){
                   $("#main_ouput").html(logInTemplate(data));
                  

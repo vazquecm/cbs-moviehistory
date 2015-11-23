@@ -3,18 +3,20 @@
 define(["jquery", "firebase", "q", "generalVariables"], 
 function ($, firebase, Q, generalVariables) {
 
-	return function(){
-	//// this (returnedUid) data is not currently used just here in case its needed///	
+	return function(){	
 
 	//create differed object for promise
 		 	var deferred = Q.defer();
 
-		//get email and password
+		//get email and password from input on page
 		var enteredEmail = $("#logInEmail").val();
 		var enteredPassword = $("#logInPassword").val();
 
-		if (enteredEmail === "" && enteredPassword === ""){
+		//if entered email or password is blank, let us know in the console
+		if (enteredEmail === "" || enteredPassword === ""){
 			console.log("email and password need to be entered");
+
+		//if email and pass are not blank
 		} else {
 
 		//reference app firebase data location
