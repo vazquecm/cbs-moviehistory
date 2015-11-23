@@ -14,12 +14,12 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
   		//add movie to users movies list
  		   addMovieToUser();
   	});
-
+/// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
 
   	// handler for searching movies, outputting, and changing rating star styling
   	allSearchFunctionality();
 
-    //handles filtering for watched movies
+    //handles filtering for watched movies using the searchMovies.hbs template to assign a class of "watched" and "unwatched" ///
     $("body").on("click", "#watched_filter", function(){
 
         //hide anything with unwatched class

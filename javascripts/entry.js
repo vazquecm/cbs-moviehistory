@@ -1,4 +1,4 @@
-//Configure require dependencies and paths
+//Configure require dependencies and paths, just setting up everything we need...all the paths that we will be using //
 requirejs.config({
 	baseUrl: "./javascripts",
 	paths:{

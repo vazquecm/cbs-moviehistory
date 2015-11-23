@@ -11,7 +11,8 @@ return function(){
   		searchUserMovies()
 
   		.then(function(){
-        
+
+      /// this is a require call that includes a "promise" from searchMovies.hbs ////  
         return populateUserMovies()
         
        })

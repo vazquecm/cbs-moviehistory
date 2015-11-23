@@ -27,7 +27,7 @@ function ($, firebase, Q, generalVariables) {
 		 //get imdbId for later image output
 		 var imdbID = generalVariables.getCurrentMovieReturned().imdbID;
 
-
+//// this code looks exacly like how the firebase database looks/nested  ///
 		 movieRef.child(movieTitle).set({
 
     				majorActors : majorActors,
