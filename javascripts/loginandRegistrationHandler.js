@@ -18,16 +18,20 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
     //when log in submit button is clicked, check user authentication, and if successful, populate page with main.hbs
   	$("body").on("click", "#logInSubmit", function(){
   		loginAuth()
+      .then(function(){
+        //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
+      searchUserMovies()
   		.then(function(){
+        return populateUserMovies
+      });
 
-        //after user is logged in, populate page with main.hbs
-  			require(["hbs!../templates/main"], function(logInTemplate){
-                  $("#mainContainer").html(logInTemplate()); 
-                });
+  			// require(["hbs!../templates/main"], function(logInTemplate){
+     //              $("#mainContainer").html(logInTemplate()); 
+     //            });
 
   			console.log("user object: ", generalVariables.getCurrentUser());
   			console.log("user uid: ", generalVariables.getCurrentUid());
-
+       }) 
   		});
   	});
   	

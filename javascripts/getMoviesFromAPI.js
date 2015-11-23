@@ -13,7 +13,7 @@ function ($, firebase, Q) {
 			var titleToPass;
 
 		//capture user input for search
-			var eneteredTitle = $("#find_move_input").val();
+			var eneteredTitle = $("#search_for_movies").val();
 
 			console.log("val entered is: ", eneteredTitle);
 

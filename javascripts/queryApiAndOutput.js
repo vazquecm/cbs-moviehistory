@@ -7,12 +7,14 @@ define(["jquery", "firebase", "q", "bootstrapJs", "getMoviesFromAPI", "generalVa
 return function(){
 
   //when find movies button is clicked, show find movies modal
-  $("body").on("click", "#find_movies_btn", function(){
-  		$("#find_movies_modal").modal();
+  // $("body").on("click", "#find_movies_btn", function(){
+  		// $("#find_movies_modal").modal();
 
   		//User enters title and clicks search button
-  		$("body").on("click", "#search_for_movies", function(){
+  		$(document).on("keyup", "#search_for_movies", function(e){
 
+        if (e.keyCode === 13) {
+        console.log("heard click for searching")
 	  		//Api returns movie data
   			getMoviesFromAPI()
 
@@ -35,9 +37,11 @@ return function(){
                 $(".modal-backdrop").remove();
                 $("body").removeClass("modal-open");
 
-  			});
-  		});
-
-  	});
-  }
+  			  });
+  		  };
+    });
+  };
 });
+
+
+

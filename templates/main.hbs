@@ -15,9 +15,10 @@
         <ul class="nav navbar-nav">
         <!-- This is the Find Movie button that is set up as a modal button for testing -->
           <li class="active">
-          <button type="button" id="find_movies_btn">Find Movies</button>
+            <input id="search_for_movies" type="text" placeholder="Search Movies ...">
+          {{!-- <button type="button" id="find_movies_btn">Find Movies</button> --}}
           </li>
-          <button id="search_movies_btn">Search Movies</button>
+          {{!-- <button id="search_movies_btn">Search Movies</button> --}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Log Out</a></li>  
@@ -34,7 +35,7 @@
   <!-- This is the modal page that will appear when the "add file is selected" -->
 
   <!-- Modal -->
-  <div class="modal fade" id="find_movies_modal">
+  {{!-- <div class="modal fade" id="find_movies_modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -51,5 +52,5 @@
         </div>
       </div>
     </div>
-
+ --}}
   <!-- This is the code to test the tile HTMl for the movie posters -->
