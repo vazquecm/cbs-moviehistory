@@ -3,11 +3,10 @@ function ($, firebase, Q, generalVariables) {
 
 	return function(){
 
-		console.log("inside the func");
-
-		//deffered object for promise
+		//deferred object for promise
 		var deferred = Q.defer();
 
+			//populate page with user movies
 			require(["hbs!../templates/searchMovies"], function(logInTemplate){
                   $("#main_ouput").html(logInTemplate(generalVariables.getCurrentUserMovies()));
 

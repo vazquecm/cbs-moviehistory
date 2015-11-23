@@ -17,9 +17,10 @@ function ($, firebase, Q, generalVariables) {
 		//reference to firebase data
 		var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+currentUid+"/movies");
 
+		//every time the module runs, do the following with the data in ref
 		ref.on("value", function(snapshot) {
 
-  			console.log("this should be movies", snapshot.val());
+  			//set the current user movies
   			generalVariables.setCurrentUserMovies(snapshot.val());
 
 			//resolve data returned

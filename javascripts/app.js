@@ -5,12 +5,12 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
   	//run login/registration functionality in loginandRegistrationHandler.js
     loginandRegistrationHandler();
 
- 	  //handles querying API for movies and outputting them to page
+ 	  //handles querying API for movies and outputting them to page when Find movies button is clicked
     queryApiAndOutput();
 
 
-  	// Handles adding a movie to firebase data list
- 	$("body").on("click", "#add_movie_button", function(){		
+  	// Handles adding a movie to firebase data list when any "add" button is clicked below a movie poster when finding movies
+ 	  $("body").on("click", "#add_movie_button", function(){		
   		//add movie to users movies list
  		   addMovieToUser();
   	});
@@ -21,13 +21,21 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
 
     //handles filtering for watched movies
     $("body").on("click", "#watched_filter", function(){
+
+        //hide anything with unwatched class
         $("#main_ouput .row").children(".unwatched").hide();
+
+        //show anything with watched class
         $("#main_ouput .row").children(".watched").show();
     });
 
     // handles filtering for unwatched movies
     $("body").on("click", "#unwatched_filter", function(){
+
+        //hide anything with watched class
         $("#main_ouput .row").children(".watched").hide();
+
+        //show anything with unwatched class
         $("#main_ouput .row").children(".unwatched").show();
     });  
 

@@ -12,6 +12,7 @@ function ($, firebase, Q, generalVariables) {
 		 //reference to firebase
 		 var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid());
 
+		 //reference movies object in current user object
 		 var movieRef = ref.child("movies");
 
 		 // get major actors and split them into array (api returns a string with each actor separated with a comma)
