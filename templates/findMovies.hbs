@@ -7,17 +7,21 @@
       <li id="user_favorites">Favorites</li>
     </ul>
 
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-3 col-md-offset-1">
-          <div class="movies img-wrap">
-            <p>{{this.Title}}</p>
-            {{!-- this is an api call through the OMDB poster api, using the api key 7c212437 --}}
-            <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250">
+  <div class="row">
+      {{!-- for each movie on user, add a column for it --}}
+      {{#each this}}
+      <div id="title_{{this.imdbID}}" class="col-md-2 col-md-offset-1 movieOutput">
+
+    {{!-- this is a hidden span, to help search firebase --}}
+      <span class="hiddenSpanId">{{this.movieName}}</span>
+      <span class="hiddenSpanRating">{{this.rating}}</span>
+        <div class="movies img-wrap">
+            <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250"><span class="glyphicon glyphicon-remove"></span>
           </div> 
-          <div id="add_movie_button" class="watched"><button type="button">Add</button></div>   
+              <div id="add_movie_button" class="watched"><button type="button">Add</button></div>   
+
       </div>
-      <div class="col-md-8"></div>
+
+         {{/each}}
+    {{!-- end else --}}
     </div>
-  </div>   
-  <!-- END CONTAINER FLUID FOR MOVIE TILE -->

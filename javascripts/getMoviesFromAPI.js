@@ -1,8 +1,8 @@
 
 //This module handles calls to the api OMDB for movies
 
-define(["jquery", "firebase", "q"], 
-function ($, firebase, Q) {
+define(["jquery", "firebase", "q", "lodash"], 
+function ($, firebase, Q, _) {
 
 	return function(){
 
@@ -43,15 +43,24 @@ function ($, firebase, Q) {
 		 	//request movie detail of title entered
 		 		//this returns all data for the movie such as title, etc, the movie poster is output via a hbs file img src link
 		 			//e.g. see findMovies.hbs , and look at image in the ".img-wrap" div
-		 	url: "http://www.omdbapi.com/?t="+titleToPass+"&y=&r=json"
+		 	url: "http://www.omdbapi.com/?s="+titleToPass+"&y=&r=json"
 
 		 	//after data is returned
 		 }).done(function(data){
 
+		 	var searchListObject = {}
+
 		 	console.log("movie data returned", data);
 
+		 	for(var i = 0; i < data.Search.length; i ++){
+		 		console.log("data[i] ", data.Search[i]);
+		 		searchListObject[data.Search[i].Title] = data.Search[i];
+		 	}
+
+
+
 		 	//resolve data returned
-		 	deferred.resolve(data);
+		 	deferred.resolve(searchListObject);
 		 });
 
 		//return promise state  sends us back to app.js where promise is first called ///
