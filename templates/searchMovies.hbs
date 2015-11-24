@@ -9,13 +9,13 @@
     <div class="row">
     	{{!-- for each movie on user, add a column for it --}}
     	{{#each this}}
-    	<div id="title_{{this.imdbID}}" class="col-md-3 col-md-offset-1 movieOutput {{#if this.watched}}
+    	<div id="title_{{this.imdbID}}" class="col-md-2 col-md-offset-1 movieOutput {{#if this.watched}}
     	watched{{else}}unwatched{{/if}}">
 
 		{{!-- this is a hidden span, to help search firebase --}}
 			<span class="hiddenSpanId">{{this.movieName}}</span>
 			<span class="hiddenSpanRating">{{this.rating}}</span>
-    		<div class="movies img-wrap">
+    		<div id="movie_stats" class="movies img-wrap">
             <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250"><span class="glyphicon glyphicon-remove"></span>
           </div> 
 
