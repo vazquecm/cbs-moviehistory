@@ -1,5 +1,5 @@
-define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars"], 
-  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars) {
+define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars", "generalVariables"], 
+  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars, generalVariables) {
 
 
   	//run login/registration functionality in loginandRegistrationHandler.js
@@ -71,5 +71,21 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
     // handles functionality for adding ratings to firebase and coloring stars when 'search my movies buttn in clicked'
       //other functionality for dynamically changing stars color after search my movies is already populated is in 'allSearchFunctionality.js'
    addRatingsandColorStars();
+
+    //handles removing movie from a user's movies object in firebase
+   $("body").on("click", ".glyphicon-remove", function(){
+
+    //get title
+    var titleToRemove = $(this).parent().parent().find(".hiddenSpanId").html();
+
+    //reference movie location
+    var refOfMovie = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid()+"/movies/"+titleToRemove);
+
+    //remove movie from firebase
+    refOfMovie.remove();
+
+    //remove from page
+    $(this).parent().parent().remove();
+   });
 
 });
