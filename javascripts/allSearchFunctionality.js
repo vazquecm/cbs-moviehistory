@@ -13,7 +13,7 @@ return function(){
   		.then(function(){
 
       /// this is a require call that includes a "promise" from searchMovies.hbs ////  
-        return populateUserMovies()
+        return populateUserMovies();
         
        })
 
@@ -42,7 +42,7 @@ return function(){
               for(var x = currentRating; x > 0; x -= 1){
 
               //color appropriate stars by selecting each glyph with .star-x (e.g. star-1  star-2)
-              $("#"+parentOfRating).find($(".stars_btn")).find($(".star-"+x)).css({"color":"goldenrod"})
+              $("#"+parentOfRating).find($(".stars_btn")).find($(".star-"+x)).css({"color":"goldenrod"});
               }
 
             }
@@ -52,5 +52,5 @@ return function(){
           });
           
     });
-   }
+   };
 });

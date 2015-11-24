@@ -1,6 +1,6 @@
 //This module handles the registration and login process for users
 
-define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
+define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies",], 
   function($, firebase,  _, Q, populateUserMovies, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
 
   return function(){	/// inject splash.hbs template to the index.html page to handle log in
@@ -22,18 +22,23 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
         //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
       searchUserMovies()
   		.then(function(){
-        return populateUserMovies
+        return populateUserMovies;
       });
 
-  			// require(["hbs!../templates/main"], function(logInTemplate){
-     //              $("#mainContainer").html(logInTemplate()); 
-     //            });
+  			require(["hbs!../templates/main"], function(logInTemplate){
+                  $("#mainContainer").html(logInTemplate());
+                });
 
+    //     $("body").on("click", "#logOut", function(){
+    //     console.log("please work");
+    // });
+
+                  
   			console.log("user object: ", generalVariables.getCurrentUser());
   			console.log("user uid: ", generalVariables.getCurrentUid());
-       }) 
+       }); 
   		});
-  	});
+  	// });
   	
     //functionality for registering user is below
     //show registration panel
@@ -71,5 +76,11 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
   		$("#register_panel").hide();
   		$("#login_panel").fadeIn("slow");
   	});
-   }
+
+    $("document").click(function() {
+        console.log("please work");
+    });
+
+    };
+
 });

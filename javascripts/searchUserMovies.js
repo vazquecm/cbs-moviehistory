@@ -35,7 +35,7 @@ function ($, firebase, Q, generalVariables) {
 		return deferred.promise;
 
 
-	}
+	};
 
 
 });

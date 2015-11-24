@@ -14,7 +14,7 @@ return function(){
   		$(document).on("keyup", "#search_for_movies", function(e){
 
         if (e.keyCode === 13) {
-        console.log("heard click for searching")
+        console.log("heard click for searching");
 	  		//Api returns movie data
   			getMoviesFromAPI()
 
@@ -38,7 +38,7 @@ return function(){
                 $("body").removeClass("modal-open");
 
   			  });
-  		  };
+  		  }
     });
   };
 });

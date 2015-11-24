@@ -14,7 +14,7 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
   		//add movie to users movies list
  		   addMovieToUser();
   	});
-/// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
+    /// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
 
   	// handler for searching movies, outputting, and changing rating star styling
   	allSearchFunctionality();
@@ -45,5 +45,7 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
     // handles functionality for adding ratings to firebase and coloring stars when 'search my movies buttn in clicked'
       //other functionality for dynamically changing stars color after search my movies is already populated is in 'allSearchFunctionality.js'
    addRatingsandColorStars();
+
+   
 
 });

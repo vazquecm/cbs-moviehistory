@@ -56,5 +56,5 @@ function ($, firebase, Q) {
 
 		//return promise state  sends us back to app.js where promise is first called ///
 		return deferred.promise;
-	}
+	};
 });
