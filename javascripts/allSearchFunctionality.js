@@ -6,7 +6,10 @@ define(["jquery", "firebase", "q", "populateUserMovies", "bootstrapJs", "searchU
 return function(){
 
       // when search moves button is clicked, run searchUserMovies.js module
-	  	$("body").on("click", "#search_movies_btn", function(){
+      // THIS IS THE NEW "ALL" BUTTON!!!
+	  	// $("body").on("click", "#search_movies_btn", function(){
+
+      console.log("I made it to all search functionality!!!!");
 
   		searchUserMovies()
 
@@ -47,10 +50,10 @@ return function(){
 
             }
           }
-
+console.log("Did I get here in allSearchfunctionality?");
 
           });
           
-    });
+    // });
    }
 });

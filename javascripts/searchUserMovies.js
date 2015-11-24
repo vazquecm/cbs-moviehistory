@@ -5,6 +5,9 @@ define(["jquery", "firebase", "q", "generalVariables"],
 function ($, firebase, Q, generalVariables) {
 
 	return function(){
+
+
+console.log("I made it to search movies!");
 		//set variable to hold user movies
 		var userMovies = {};
 
@@ -13,6 +16,8 @@ function ($, firebase, Q, generalVariables) {
 
 		//get current uid of user
 		var currentUid = generalVariables.getCurrentUid();
+
+		console.log("currentUid ", currentUid);
 
 		//reference to firebase data
 		var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+currentUid+"/movies");

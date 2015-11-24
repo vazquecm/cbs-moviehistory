@@ -1,7 +1,7 @@
 //This module handles the registration and login process for users
 
-define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies"], 
-  function($, firebase,  _, Q, populateUserMovies, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies) {
+define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserInFirebase", "loginAuth", "bootstrapJs", "getMoviesFromAPI", "generalVariables", "addMovieToUser", "searchUserMovies", "allSearchFunctionality"], 
+  function($, firebase,  _, Q, populateUserMovies, createUserInFirebase, loginAuth, bootstrapJs, getMoviesFromAPI, generalVariables, addMovieToUser, searchUserMovies, allSearchFunctionality) {
 
   return function(){	/// inject splash.hbs template to the index.html page to handle log in
   	require(["hbs!../templates/splash"], function(logInTemplate){
@@ -17,22 +17,18 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
 
     //when log in submit button is clicked, check user authentication, and if successful, populate page with main.hbs
   	$("body").on("click", "#logInSubmit", function(){
-  		loginAuth()
-      .then(function(){
-        //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
-      searchUserMovies()
-  		.then(function(){
-        return populateUserMovies
+    		loginAuth()
+        .then(function(){
+          console.log("I am HERE!");
+      //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
+        allSearchFunctionality()
+
+        require(["hbs!../templates/main"], function(logInTemplate){
+                  $("#mainContainer").html(logInTemplate()); 
+                });
+
+        console.log("user object: ", generalVariables.getCurrentUser());
       });
-
-  			// require(["hbs!../templates/main"], function(logInTemplate){
-     //              $("#mainContainer").html(logInTemplate()); 
-     //            });
-
-  			console.log("user object: ", generalVariables.getCurrentUser());
-  			console.log("user uid: ", generalVariables.getCurrentUid());
-       }) 
-  		});
   	});
   	
     //functionality for registering user is below

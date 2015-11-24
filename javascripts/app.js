@@ -15,9 +15,14 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
  		   addMovieToUser();
   	});
 /// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
+    // when search moves button is clicked, run searchUserMovies.js module
+    // THIS IS THE NEW "ALL" BUTTON!!!
+
+    $("body").on("click", "#search_movies_btn", function(){
 
   	// handler for searching movies, outputting, and changing rating star styling
-  	allSearchFunctionality();
+  	   allSearchFunctionality();
+    });
 
     //handles filtering for watched movies using the searchMovies.hbs template to assign a class of "watched" and "unwatched" ///
     $("body").on("click", "#watched_filter", function(){
