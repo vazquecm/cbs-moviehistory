@@ -1,18 +1,46 @@
-//this module that goes through the user movies, outputting only those that have 5 star
+//this module that goes through the user movies, outputting only those that have 5 stars
 
 define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"], 
   function($, firebase, Q, bootstrapJs, generalVariables) {
 
 	return function(){
-// Go through all movies in the users list and put the ones with 5 star ratings in an arrya
-	var userMovies = generalVariables.getCurrentUserMovies();	console.log("RATING ");
-	console.log("made it to fiveStars after generalVariables");
-	console.log("rating ", this.rating);
-// Need to sort through the object of movies to creat a new object with only movies containg a 5 star rating
+
+		//get all elements (spans) with the hiddenSpanRating class and put them into an array
+		var spanArray = $(".hiddenSpanRating");
+
+		//loop over span array 
+		for(var i = 0; i < spanArray.length; i++){
+			console.log("Current span, ",spanArray[i]);
+
+			console.log("the inner htmls: ", parseInt(spanArray[i].innerHTML));
+
+			//get the class of the current span element in the array
+			var theClass = spanArray[i].getAttribute("class");
+
+			//get the id of the parent div of current span
+			var parentNode = spanArray[i].parentNode.getAttribute("id");
+
+			//if the current html of current span is equal to 5 (we must convert the string to a number)
+			if(parseInt(spanArray[i].innerHTML) === 5){
+
+				console.log("this should show ");
+
+				//show parent node
+				$("#"+parentNode).show();
+				
+
+			//else if the rating is not === 5
+			} else{
+
+				//hide parent node
+				$("#"+parentNode).hide();
+				
+			}
+
+			
+		}
 
 	}
-	// 	if (userMovies.movie.rating[i] === 5) {
-	// 		favoriteMovies[i]
-	// 	}	
+		
 	
 });
