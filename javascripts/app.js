@@ -21,8 +21,8 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
 /// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
     // when search moves button is clicked, run searchUserMovies.js module
     // THIS IS THE NEW "ALL" BUTTON!!!
-
-    $("body").on("click", "#search_movies_btn", function(){
+    // when user clicks on All, all movies in their DB are displayed
+    $("body").on("click", "#all_user_movies", function(){
 
   	// handler for searching movies, outputting, and changing rating star styling
   	   allSearchFunctionality();
