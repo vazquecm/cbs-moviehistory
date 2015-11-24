@@ -7,9 +7,6 @@ return function(){
 
       // when search moves button is clicked, run searchUserMovies.js module
       // THIS IS THE NEW "ALL" BUTTON!!!
-	  	// $("body").on("click", "#search_movies_btn", function(){
-
-      console.log("I made it to all search functionality!!!!");
 
   		searchUserMovies()
 

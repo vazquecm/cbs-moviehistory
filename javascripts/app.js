@@ -13,6 +13,10 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
  	  $("body").on("click", "#add_movie_button", function(){		
   		//add movie to users movies list
  		   addMovieToUser();
+
+      //after movie is added, reload the screen with movies from the users database
+       allSearchFunctionality();
+ 
   	});
 /// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
     // when search moves button is clicked, run searchUserMovies.js module

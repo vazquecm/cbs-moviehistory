@@ -34,8 +34,8 @@ return function(){
                 });
 
   				//remove extra modal styling if modal styling not cleared
-                $(".modal-backdrop").remove();
-                $("body").removeClass("modal-open");
+                // $(".modal-backdrop").remove();
+                // $("body").removeClass("modal-open");
 
   			  });
   		  };
