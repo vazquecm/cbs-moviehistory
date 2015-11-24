@@ -5,9 +5,6 @@ define(["jquery", "firebase", "q", "populateUserMovies", "bootstrapJs", "searchU
 
 return function(){
 
-      // when search moves button is clicked, run searchUserMovies.js module
-      // THIS IS THE NEW "ALL" BUTTON!!!
-
   		searchUserMovies()
 
   		.then(function(){
@@ -19,6 +16,8 @@ return function(){
 
         //after movies are populated, color in appropriate star ratings
        .then(function(){
+
+// ????????? call a function to do the stuff below so other modules can use it too!
 
           //get all star button parent divs into an array
           var ratings = $(".hiddenSpanRating");
@@ -47,10 +46,6 @@ return function(){
 
             }
           }
-console.log("Did I get here in allSearchfunctionality?");
-
-          });
-          
-    // });
+       });
    }
 });

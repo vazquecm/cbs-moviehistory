@@ -6,8 +6,6 @@ function ($, firebase, Q, generalVariables) {
 
 	return function(){
 
-
-console.log("I made it to search movies!");
 		//set variable to hold user movies
 		var userMovies = {};
 
@@ -32,15 +30,9 @@ console.log("I made it to search movies!");
 			deferred.resolve();
 			
 		});
-
-
-
-
 		//return promise state
 		return deferred.promise;
 
-
 	}
-
 
 });

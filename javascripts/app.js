@@ -1,5 +1,5 @@
-define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars"], 
-  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars) {
+define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars"], 
+  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars) {
 
 
   	//run login/registration functionality in loginandRegistrationHandler.js
@@ -47,6 +47,23 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
         //show anything with unwatched class
         $("#main_ouput .row").children(".unwatched").show();
     });  
+
+// if the favorites filter is clicked, then show all movies on the users DB that have a 5 star rating
+    $("body").on("click", "#user_favorites", function(){
+
+      console.log("heard favorite click");
+     // checking for 5 star rating star and outputting movie favorites
+             //hide anything with watched class
+
+      searchUserMovies()
+      .then(function(){
+    //this calls a module that filters for only 5 star favorites and then output them 
+console.log("Made it to fiveStars calls");
+        fiveStars()
+console.log("back from fiveStars call");
+      });
+    });
+
 
     //handles functionality for changing unwatched movies to watched
    changedUnwatchedToWatched();
