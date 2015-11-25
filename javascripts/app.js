@@ -1,23 +1,47 @@
-define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars", "generalVariables"], 
-  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars, generalVariables) {
+define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars", "generalVariables", "colorStars"], 
+  function($, firebase,  _, Q, setCurrentMovie, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars, generalVariables, colorStars) {
 
 
   	//run login/registration functionality in loginandRegistrationHandler.js
     loginandRegistrationHandler();
 
- 	  //handles querying API for movies and outputting them to page when Find movies button is clicked
-    queryApiAndOutput();
+ 	  //handles querying API for movies and outputting them to page when movie is searched for
+    queryApiAndOutput().then(function(){
+
+      //currently not working, need to fix this
+      colorStars();
+    });
 
 
   	// Handles adding a movie to firebase data list when any "add" button is clicked below a movie poster when finding movies
- 	  $("body").on("click", "#add_movie_button", function(){		
-  		//add movie to users movies list
- 		   addMovieToUser();
+ 	  $("body").on("click", "#add_movie_button", function(){	
 
-      //after movie is added, reload the screen with movies from the users database
-       allSearchFunctionality();
+      var title = $(this).parent().attr("id");
+
+      var splitTitle = title.split("_")[1];
+
+      console.log("splitTitle ", splitTitle);
+
+
+      //ajax call here for imdb id
+
+      $.ajax({
+        url: "http://www.omdbapi.com/?i="+splitTitle+"&plot=short&r=json"
+
+      }).done(function(data){
+
+        console.log("data is ", data);
+
+    		//add movie to users movies list
+    		  addMovieToUser(data);
+          
+        //after movie is added, reload the screen with movies from the users database
+         allSearchFunctionality();
+      });
+
+           
+      });
  
-  	});
 /// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
     // when search moves button is clicked, run searchUserMovies.js module
     // THIS IS THE NEW "ALL" BUTTON!!!

@@ -45,6 +45,8 @@ function ($, firebase, Q, _) {
 		 			//e.g. see findMovies.hbs , and look at image in the ".img-wrap" div
 		 	url: "http://www.omdbapi.com/?s="+titleToPass+"&y=&r=json"
 
+		 	//need to get actors
+
 		 	//after data is returned
 		 }).done(function(data){
 
@@ -54,7 +56,7 @@ function ($, firebase, Q, _) {
 
 		 	for(var i = 0; i < data.Search.length; i ++){
 		 		console.log("data[i] ", data.Search[i]);
-		 		searchListObject[data.Search[i].Title] = data.Search[i];
+		 		searchListObject[data.Search[i].imdbID] = data.Search[i];
 		 	}
 
 
