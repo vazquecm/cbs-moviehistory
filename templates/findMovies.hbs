@@ -13,12 +13,14 @@
       <div id="title_{{this.imdbID}}" class="col-md-2 col-md-offset-1 movieOutput">
 
     {{!-- this is a hidden span, to help search firebase --}}
-      <span class="hiddenSpanId">{{this.movieName}}</span>
-      <span class="hiddenSpanRating">{{this.rating}}</span>
+      <span class="hiddenSpanId">{{this.Title}}</span>
+      <span class="hiddenSpanRating"></span>
         <div class="movies img-wrap">
             <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250">
           </div> 
-              <div id="add_movie_button" class="watched"><button type="button">Add</button></div>   
+              <div id="add_movie_button" class="watched">
+                <button type="button" class="btn">Add</button>
+              </div>   
 
       </div>
 

@@ -6,12 +6,7 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
     loginandRegistrationHandler();
 
  	  //handles querying API for movies and outputting them to page when movie is searched for
-    queryApiAndOutput().then(function(){
-
-      //currently not working, need to fix this
-      colorStars();
-    });
-
+    queryApiAndOutput();
 
   	// Handles adding a movie to firebase data list when any "add" button is clicked below a movie poster when finding movies
  	  $("body").on("click", "#add_movie_button", function(){	
