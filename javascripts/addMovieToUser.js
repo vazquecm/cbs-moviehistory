@@ -6,6 +6,8 @@ function ($, firebase, Q, generalVariables) {
 
 	return function(data){
 
+		console.log("data>>>>>>>>>>>>>>>>>>>", data);
+
 		//create differed object for promise
 		 var deferred = Q.defer();
 
@@ -23,6 +25,9 @@ function ($, firebase, Q, generalVariables) {
 
 		 console.log("majorActors", majorActors );
 
+		 //get plot
+		 var plot = data.Plot;
+
 		 //get movie title
 		 var movieTitle = data.Title;
 
@@ -36,6 +41,7 @@ function ($, firebase, Q, generalVariables) {
 		 movieRef.child(movieTitle).set({
 
     				majorActors : majorActors,
+    				plot: plot,
     				movieName: movieTitle,
     				rating: 0,
     				watched: false,

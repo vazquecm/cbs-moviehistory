@@ -107,4 +107,69 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
     $(this).parent().parent().remove();
    });
 
+
+   //handles modal display for movies that exist in firebase when clicking on a movie div
+   $("body").on("click", ".existing", function(){
+    console.log("this should display a modal with appropraite output");
+
+    var titleClicked = $(this).parent().find(".hiddenSpanId").html();
+
+    var currentMovieData;
+
+    //get data about current movie in firebase
+    var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid()+"/movies/"+titleClicked);
+
+    ref.on("value", function(snapshot) {
+      console.log(snapshot.val());
+
+      currentMovieData = snapshot.val();
+    });
+
+    //run function that outputs modal
+    function outputModal(data){
+      var deferred = Q.defer();
+
+      require(["hbs!../templates/modalDetails"], function(template){
+        $("#modalDetailsOutput").html(template(data));
+        deferred.resolve();
+      });
+
+      return deferred.promise;
+    }
+
+    //call output modal function
+    outputModal(currentMovieData)
+
+    //then call the modal functionality
+    .then(function(){
+    $("#existingMovieModal").modal();
+      
+    });
+
+   })
+
+
+  $("body").on("click", "#logOut", function(){
+
+    var ref = new Firebase("https://cbs-moviehistory.firebaseio.com");
+
+    ref.unauth();
+
+    generalVariables.setCurrentUid("");
+
+    var authData = ref.getAuth();
+    if (authData) {
+      console.log("User " + authData.uid + " is logged in with " + authData.provider);
+    } else {
+      console.log("User is logged out");
+    }
+
+    require(["hbs!../templates/splash"], function(logInTemplate){
+                  $("#mainContainer").html(logInTemplate());
+                });
+    
+  });
+
+  
+
 });

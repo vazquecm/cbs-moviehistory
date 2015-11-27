@@ -60,6 +60,9 @@ body {
     top: 0px;
     cursor: pointer; }
 
+.existing, .nonExisting {
+  cursor: pointer; }
+
 /*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */

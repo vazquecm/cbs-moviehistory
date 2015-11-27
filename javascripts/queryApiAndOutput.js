@@ -66,6 +66,9 @@ return function(){
                   //get the id of the parent
                   var parentId = spanIds[i].parentNode.getAttribute("id");
 
+                  //remove "nonExisting" class and replace with "existing"
+                  $("#"+parentId).find(".img-wrap").removeClass("nonExisting").addClass("existing");
+
                   //remove the "add movie button" child button
                   $("#"+parentId).find("#add_movie_button").remove();
 
