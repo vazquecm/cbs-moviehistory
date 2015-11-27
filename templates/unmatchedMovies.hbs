@@ -1,0 +1,17 @@
+{{!-- for each movie on user, add a column for it --}}
+      {{#each this}}
+      <div id="title_{{this.imdbID}}" class="col-md-3 movieOutput">
+
+    {{!-- this is a hidden span, to help search firebase --}}
+      <span class="hiddenSpanId">{{this.Title}}</span>
+      <span class="hiddenSpanRating"></span>
+        <div class="movies img-wrap nonExisting">
+            <img src="http://img.omdbapi.com/?i={{this.imdbID}}&apikey=7c212437" height="300" width="250">
+          </div> 
+              <div id="add_movie_button" class="watched">
+                <button type="button" class="btn">Add</button>
+              </div>   
+
+      </div>
+
+         {{/each}}

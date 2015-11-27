@@ -6,6 +6,8 @@ define(["jquery", "firebase", "q", "bootstrapJs", "getMoviesFromAPI", "generalVa
 
 return function(){
 
+  var userMoviesInFirebase;
+
 
   		//User enters title and clicks search button
   		$(document).on("keyup", "#search_for_movies", function(e){
@@ -18,6 +20,10 @@ return function(){
         //when data is returned
         .then(function(data){
 
+          var dataFromApi = data;
+
+          var matchedMovies={};
+
           //get movies of user in firebase
           var refToUserMovies = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid()+"/movies");
 
@@ -26,72 +32,45 @@ return function(){
             userMoviesInFirebase = snapshot.val();
           });
 
+          console.log("userMoviesInFirebase>>>>>>>>>>>>>>>>>>>>>>", userMoviesInFirebase);
 
-          //set the current movie for use in other modules via generalVariables
-          generalVariables.setReturnedMovieList(data);
+          console.log("data returned from api", dataFromApi);
 
-          //function that returns a promise after movies are output
-          function outputTheData(){
+          
 
-            var deferred = Q.defer();
+        for(var key in userMoviesInFirebase){
+
+          //for every key in uer movies
             
-                require(["hbs!../templates/findMovies"], function(logInTemplate){
-                    $("#main_ouput").html(logInTemplate(data)); 
+            //loop through keys returned from api to get matches
+            for(var apikeys in dataFromApi){
 
-                    deferred.resolve();
-                  });
+              //if a movie title from firebase equals title returned from api
+              if(userMoviesInFirebase[key].movieName === dataFromApi[apikeys].Title){
+                console.log("we have a match ", userMoviesInFirebase[key]);
 
-                return deferred.promise;
-          }
+                //store current movie iside matched movies
+                matchedMovies[userMoviesInFirebase[key].movieName] = userMoviesInFirebase[key];
 
-          //after output
-          outputTheData()
-          .then(function(){
-
-            //get titles in span elements
-            var spanIds = $(".img-wrap").parent().find(".hiddenSpanId");
-
-            //loop through spans
-            for(var i = 0; i < spanIds.length; i++){
-
-              //get current title that we will check
-              var currentTitle = spanIds[i].innerHTML;
-
-              //compare title in span to movies in firebase
-              for(var key in userMoviesInFirebase){
-
-                //if one matches
-                if(userMoviesInFirebase[key].movieName === currentTitle){
-
-                  //get the id of the parent
-                  var parentId = spanIds[i].parentNode.getAttribute("id");
-
-                  //remove "nonExisting" class and replace with "existing"
-                  $("#"+parentId).find(".img-wrap").removeClass("nonExisting").addClass("existing");
-
-                  //remove the "add movie button" child button
-                  $("#"+parentId).find("#add_movie_button").remove();
-
-                  //add rating into hidden span rating
-                  $("#"+parentId).find(".hiddenSpanRating").html(userMoviesInFirebase[key].rating);
-
-                  console.log("current key", userMoviesInFirebase[key]);
-
-                  if(userMoviesInFirebase[key].watched){
-                  //append star divs if movie has been watched  (handlebars was not executing correctly here, there was a delay, so we used regular output)
-                  $("#"+parentId).append('<div class="movies_btn stars_btn"><span class="glyphicon glyphicon-star star-1" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-2" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-3" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-4" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-5" aria-hidden="true"></span></div>');
-
-                  } else {
-                    $("#"+parentId).append('<div id="add_movie_button" class="watched"><button type="button" class="btn">Watched</button></div>');
-                  }
-
-
-                }
-
+                //delete current movie from data returned
+                delete dataFromApi[apikeys];
               }
 
-
             }
+
+
+        }
+
+        //give matched object to hbs template
+         require(["hbs!../templates/matchedMovies"], function(template){
+            $("#main_ouput").html(template(matchedMovies));
+          });
+
+        //give dataFromApi to another hbs template
+        require(["hbs!../templates/unmatchedMovies"], function(template){
+            $("#main_ouput").append(template(dataFromApi));
+          });
+
       
             //color star ratings
             var hiddenRatings = $(".stars_btn").parent().find(".hiddenSpanRating");
@@ -115,7 +94,7 @@ return function(){
 
 
 
-          });
+          // });
 
           });
         };
