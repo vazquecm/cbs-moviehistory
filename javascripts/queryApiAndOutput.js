@@ -69,11 +69,15 @@ return function(){
                   //remove the "add movie button" child button
                   $("#"+parentId).find("#add_movie_button").remove();
 
+                  //add rating into hidden span rating
+                  $("#"+parentId).find(".hiddenSpanRating").html(userMoviesInFirebase[key].rating);
+
                   console.log("current key", userMoviesInFirebase[key]);
 
                   if(userMoviesInFirebase[key].watched){
                   //append star divs if movie has been watched  (handlebars was not executing correctly here, there was a delay, so we used regular output)
                   $("#"+parentId).append('<div class="movies_btn stars_btn"><span class="glyphicon glyphicon-star star-1" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-2" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-3" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-4" aria-hidden="true"></span><span class="glyphicon glyphicon-star star-5" aria-hidden="true"></span></div>');
+
                   } else {
                     $("#"+parentId).append('<div id="add_movie_button" class="watched"><button type="button" class="btn">Watched</button></div>');
                   }
@@ -83,7 +87,30 @@ return function(){
 
               }
 
+
             }
+      
+            //color star ratings
+            var hiddenRatings = $(".stars_btn").parent().find(".hiddenSpanRating");
+
+            for(var i = 0; i < hiddenRatings.length; i++){
+              console.log("current span parent ", hiddenRatings[i].parentNode);
+
+              var theRating = hiddenRatings[i].innerHTML;
+
+
+              //reference id of parent
+              var currentId = hiddenRatings[i].parentNode.getAttribute("id");
+
+              //color appropriate star ratings
+              for( var x = theRating; x > 0; x -= 1 ){
+              $("#"+currentId).find(".stars_btn").children(".star-"+x).css({"color": "goldenrod"});
+              }
+
+
+            }
+
+
 
           });
 
