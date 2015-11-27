@@ -20,6 +20,16 @@ function ($, firebase, Q, _) {
 			//split the title that the user entered at every space character
 			splitTitle = eneteredTitle.split(" ");
 
+			console.log("splitTitle ", splitTitle);
+
+			//pop the last space off if entered
+			if(splitTitle[(splitTitle.length) - 1] === ""){
+				console.log("this should be popped off");
+
+				//should now remove this
+				splitTitle.pop(splitTitle[(splitTitle.length) - 1]);
+			}
+
 			//if length is only 1, that means only one word was entered
 			if(splitTitle.length === 1){
 
@@ -36,7 +46,9 @@ function ($, firebase, Q, _) {
 				//convert the rejoined string to lower case
 				titleToPass = rejoinedTitle.toLowerCase();
 
+
 			}
+			console.log("titleToPass >>>>>>>>>>>>>>>>>", titleToPass);
 
 		 $.ajax({
 
