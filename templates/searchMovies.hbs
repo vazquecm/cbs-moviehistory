@@ -3,7 +3,7 @@
     <div class="row">
     	{{!-- for each movie on user, add a column for it --}}
     	{{#each this}}
-    	<div id="title_{{this.imdbID}}" class="col-md-2 col-md-offset-1 movieOutput {{#if this.watched}}
+    	<div id="title_{{this.imdbID}}" class="col-md-3 movieOutput {{#if this.watched}}
     	watched{{else}}unwatched{{/if}}">
 
 		{{!-- this is a hidden span, to help search firebase --}}

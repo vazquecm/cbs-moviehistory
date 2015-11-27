@@ -26,7 +26,8 @@ body {
   display: none; }
 
 .movieOutput {
-  margin-top: 50px; }
+  margin-top: 50px;
+  padding-left: 60px; }
 
 .movies_btn {
   height: 33px; }

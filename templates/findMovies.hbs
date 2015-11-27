@@ -1,16 +1,10 @@
 
   <div class="container-fluid">
-    {{!--   <ul id="filters">
-      <li id="all_user_movies">All</li>
-      <li id="watched_filter">Watched</li>
-      <li id="unwatched_filter">Unwatched</li>
-      <li id="user_favorites">Favorites</li>
-    </ul> --}}
 
   <div class="row">
       {{!-- for each movie on user, add a column for it --}}
       {{#each this}}
-      <div id="title_{{this.imdbID}}" class="col-md-2 col-md-offset-1 movieOutput">
+      <div id="title_{{this.imdbID}}" class="col-md-3 movieOutput">
 
     {{!-- this is a hidden span, to help search firebase --}}
       <span class="hiddenSpanId">{{this.Title}}</span>
