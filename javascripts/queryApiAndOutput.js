@@ -61,6 +61,10 @@ return function(){
 
         }
 
+        function populate(){
+
+          var defer = Q.defer();
+
         //give matched object to hbs template
          require(["hbs!../templates/matchedMovies"], function(template){
             $("#main_ouput").html(template(matchedMovies));
@@ -71,30 +75,39 @@ return function(){
             $("#main_ouput").append(template(dataFromApi));
           });
 
-      
+          defer.resolve();
+
+         return defer.promise;
+
+        }
+
+        populate()
+        .then(function(){
+
+          console.log("meh");
+
             //color star ratings
             var hiddenRatings = $(".stars_btn").parent().find(".hiddenSpanRating");
+
+            console.log("hiddenRatings ", hiddenRatings);
 
             for(var i = 0; i < hiddenRatings.length; i++){
               console.log("current span parent ", hiddenRatings[i].parentNode);
 
+              //get parentNode id
+              var parentId = hiddenRatings[i].parentNode.getAttribute("id");
+
+              //get rating to reference
               var theRating = hiddenRatings[i].innerHTML;
 
 
-              //reference id of parent
-              var currentId = hiddenRatings[i].parentNode.getAttribute("id");
-
-              //color appropriate star ratings
-              for( var x = theRating; x > 0; x -= 1 ){
-              $("#"+currentId).find(".stars_btn").children(".star-"+x).css({"color": "goldenrod"});
-              }
-
+             $("#"+parentId).css({"background-color":"goldenrod"});
 
             }
+          
+        });
 
-
-
-          // });
+      
 
           });
         };
