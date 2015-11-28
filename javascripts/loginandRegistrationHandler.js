@@ -27,6 +27,8 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
                   $("#mainContainer").html(logInTemplate()); 
                 });
 
+        $("body").css({"background-image": "none"});
+
         console.log("user object: ", generalVariables.getCurrentUser());
       });
   	});
