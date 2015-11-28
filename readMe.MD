@@ -4,6 +4,9 @@ Template for splash.hbs complete. The file has the splash, login, and register m
 
 Most of curriculum in this branch has been accomplished.  What needs to be done is the add button needs to show user that movie has been added to their list instead of just sitting there.  
 
-The delete button needs to function for user to remove a movie from their list.  
+The delete button needs to function for user to remove a movie from their list.
+
+The logout button now is functional.  When the user logs out of the website it will bring them back to the original log in/register page.  
+  
   
     

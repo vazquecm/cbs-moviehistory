@@ -1,5 +1,5 @@
-define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars", "generalVariables"], 
-  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars, generalVariables) {
+define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "queryApiAndOutput", "allSearchFunctionality", "bootstrapJs", "addMovieToUser", "changedUnwatchedToWatched", "addRatingsandColorStars", "searchUserMovies", "fiveStars", "generalVariables", "hbs!../templates/splash"], 
+  function($, firebase,  _, Q, loginandRegistrationHandler, queryApiAndOutput, allSearchFunctionality, bootstrapJs, addMovieToUser, changedUnwatchedToWatched, addRatingsandColorStars, searchUserMovies, fiveStars, generalVariables, splash) {
 
 
   	//run login/registration functionality in loginandRegistrationHandler.js
@@ -59,7 +59,7 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
       .then(function(){
     //this calls a module that filters for only 5 star favorites and then output them 
     console.log("Made it to fiveStars calls");
-        fiveStars()
+        fiveStars();
     console.log("back from fiveStars call");
       });
     });
@@ -84,8 +84,21 @@ define(["jquery", "firebase", "lodash", "q", "loginandRegistrationHandler", "que
     //remove movie from firebase
     refOfMovie.remove();
 
-    //remove from page
+    //remove movie from page
     $(this).parent().parent().remove();
    });
+
+   /// this functionality allows the user to log out of firebase and then it brings the user to initial login/register page ///
+   $("body").on("click", "#logout_btn", function(){
+      console.log("trying to log out");
+        var refUnauth = new Firebase ("https://cbs-moviehistory.firebaseio.com");
+        console.log("refUnauth", refUnauth);
+        generalVariables.setCurrentUid = "";
+
+        require(["hbs!../templates/splash"], function(logInTemplate){
+            $("#mainContainer").html(logInTemplate());
+      });
+
+  });
 
 });

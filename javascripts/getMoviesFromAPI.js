@@ -48,7 +48,7 @@ function ($, firebase, Q, _) {
 		 	//after data is returned
 		 }).done(function(data){
 
-		 	var searchListObject = {}
+		 	var searchListObject = {};
 
 		 	console.log("movie data returned", data);
 
@@ -65,5 +65,5 @@ function ($, firebase, Q, _) {
 
 		//return promise state  sends us back to app.js where promise is first called ///
 		return deferred.promise;
-	}
+	};
 });

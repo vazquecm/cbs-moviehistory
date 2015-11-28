@@ -40,7 +40,7 @@ define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"],
 			
 		}
 
-	}
+	};
 		
 	
 });

@@ -21,7 +21,7 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
         .then(function(){
           console.log("I am HERE!");
       //after user is logged in, populate page with main.hbs  need to call cbs database to display user specific database info /// 
-        allSearchFunctionality()
+        allSearchFunctionality();
 
         require(["hbs!../templates/main"], function(logInTemplate){
                   $("#mainContainer").html(logInTemplate()); 
@@ -67,5 +67,5 @@ define(["jquery", "firebase", "lodash", "q", "populateUserMovies", "createUserIn
   		$("#register_panel").hide();
   		$("#login_panel").fadeIn("slow");
   	});
-   }
+   };
 });

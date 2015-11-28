@@ -13,7 +13,7 @@ function ($) {
 	return {
 
 		getCurrentUid: function(){
-			return currentUid
+			return currentUid;
 		},
 
 		setCurrentUid: function(value){
@@ -25,11 +25,11 @@ function ($) {
 		},
 
 		setCurrentUser: function(value){
-			currentUser = value
+			currentUser = value;
 		},
 
 		getCurrentMovieReturned : function(){
-			return currentMovieReturned
+			return currentMovieReturned;
 		},
 
 		setCurrentMovieReturned : function(value){
@@ -44,6 +44,6 @@ function ($) {
 			currentUserMovies = value;
 		}
 
-	}
+	};
 
 });

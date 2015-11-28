@@ -43,5 +43,5 @@ define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"],
               $(this).parent().find($(".star-"+i)).css({"color": "goldenrod"});      
             }
         });
-    }
+    };
   });
