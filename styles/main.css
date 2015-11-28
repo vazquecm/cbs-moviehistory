@@ -1,28 +1,10 @@
 body {
   background-color: gray; }
 
-#splash_panel {
-  /*border: 2px solid black;*/
-  width: 300px;
-  padding: 25px;
-  border: 20px solid black;
-  margin: 25px;
-  font-size: 25px; }
+#splash_panel, #login_panel, #register_panel {
+  /*border: 2px solid black;*/ }
 
-#login_panel {
-  width: 300px;
-  border: 20px solid black;
-  margin: 25px;
-  padding: 25px;
-  font-size: 20px;
-  display: none; }
-
-#register_panel {
-  width: 300px;
-  border: 20px solid black;
-  margin: 25px;
-  padding: 25px;
-  font-size: 20px;
+#login_panel, #register_panel {
   display: none; }
 
 .movieOutput {
@@ -62,6 +44,9 @@ body {
 
 .existing, .nonExisting {
   cursor: pointer; }
+
+#search_for_movies {
+  margin-top: 7px; }
 
 /*# sourceMappingURL=main.css.map */
 
