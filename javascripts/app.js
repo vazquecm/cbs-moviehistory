@@ -94,6 +94,7 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
     //handles removing movie from a user's movies object in firebase
    $("body").on("click", ".glyphicon-remove", function(){
 
+
     //get title
     var titleToRemove = $(this).parent().parent().find(".hiddenSpanId").html();
 
@@ -105,14 +106,16 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
 
     //remove from page
     $(this).parent().parent().remove();
+
+    $("#existingMovieModal").modal("hide");
    });
 
 
    //handles modal display for movies that exist in firebase when clicking on a movie div
-   $("body").on("click", ".existing", function(){
+   $("body").on("click", ".existing img", function(){
     console.log("this should display a modal with appropraite output");
 
-    var titleClicked = $(this).parent().find(".hiddenSpanId").html();
+    var titleClicked = $(this).parent().parent().find(".hiddenSpanId").html();
 
     var currentMovieData;
 
