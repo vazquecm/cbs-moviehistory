@@ -8,11 +8,17 @@
 	        <h4 class="modal-title">{{this.movieName}}</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>Year Released: {{this.yearReleased}}</p>
-	        <p>Plot: {{this.plot}}</p>
+	        <p><span class="emph">Year Released:</span> {{this.yearReleased}}</p>
+	        <p><span class="emph">Major Actors:</span> {{this.actorString}}</p>
+	        <p><span class="emph">Plot:</span> {{this.plot}}</p>
+	        {{#if this.watched}}
+	        <span class="emph"<p>You have watched this movie</p></span>
+	        {{else}}
+	        <span class="emph"<p>You have not watched this movie</p></span>
+	        {{/if}}
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Awesome</button>
 	      </div>
 	    </div>
 

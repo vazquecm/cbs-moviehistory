@@ -32,9 +32,9 @@ return function(){
             userMoviesInFirebase = snapshot.val();
           });
 
-          console.log("userMoviesInFirebase>>>>>>>>>>>>>>>>>>>>>>", userMoviesInFirebase);
+          // console.log("userMoviesInFirebase>>>>>>>>>>>>>>>>>>>>>>", userMoviesInFirebase);
 
-          console.log("data returned from api", dataFromApi);
+          // console.log("data returned from api", dataFromApi);
 
           
 
@@ -91,7 +91,7 @@ return function(){
             console.log("hiddenRatings ", hiddenRatings);
 
             for(var i = 0; i < hiddenRatings.length; i++){
-              console.log("current span parent ", hiddenRatings[i].parentNode);
+              // console.log("current span parent ", hiddenRatings[i].parentNode);
 
               //get parentNode id
               var parentId = hiddenRatings[i].parentNode.getAttribute("id");
@@ -105,7 +105,7 @@ return function(){
                 $("#"+parentId).find(".stars_btn").find("stars-"+theRating).css({"color":"goldenrod"});
 
                 //for testing I colored parent div
-                console.log("the target star ",  $("#"+parentId).find(".stars_btn").find("stars-"+theRating));
+                // console.log("the target star ",  $("#"+parentId).find(".stars_btn").find("stars-"+theRating));
               }
 
             }

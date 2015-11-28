@@ -6,7 +6,7 @@ function ($, firebase, Q, generalVariables) {
 
 	return function(data){
 
-		console.log("data>>>>>>>>>>>>>>>>>>>", data);
+		console.log("data check   >>>>>>>>>>>>>>>>>>>", data);
 
 		//create differed object for promise
 		 var deferred = Q.defer();
@@ -16,6 +16,9 @@ function ($, firebase, Q, generalVariables) {
 
 		 //reference movies object in current user object
 		 var movieRef = ref.child("movies");
+
+		 //get actors in string form
+		 var actorString = data.Actors;
 
 		 // get major actors and split them into array (api returns a string with each actor separated with a comma)
 		 //The line below isnt working because it doesnt have actors, what we need to do then is
@@ -27,6 +30,7 @@ function ($, firebase, Q, generalVariables) {
 
 		 //get plot
 		 var plot = data.Plot;
+
 
 		 //get movie title
 		 var movieTitle = data.Title;
@@ -41,6 +45,7 @@ function ($, firebase, Q, generalVariables) {
 		 movieRef.child(movieTitle).set({
 
     				majorActors : majorActors,
+    				actorString: actorString,
     				plot: plot,
     				movieName: movieTitle,
     				rating: 0,

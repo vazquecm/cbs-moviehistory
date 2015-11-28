@@ -152,27 +152,6 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
    })
 
 
-  $("body").on("click", "#logOut", function(){
-
-    var ref = new Firebase("https://cbs-moviehistory.firebaseio.com");
-
-    ref.unauth();
-
-    generalVariables.setCurrentUid("");
-
-    var authData = ref.getAuth();
-    if (authData) {
-      console.log("User " + authData.uid + " is logged in with " + authData.provider);
-    } else {
-      console.log("User is logged out");
-    }
-
-    require(["hbs!../templates/splash"], function(logInTemplate){
-                  $("#mainContainer").html(logInTemplate());
-                });
-    
-  });
-
   
 
 });
