@@ -1,26 +1,54 @@
 body {
-  background-color: gray; }
+  background-color: whitesmoke;
+  padding-bottom: 200px; }
+
+.navbar-default {
+  background-color: #00B5B5;
+  border: none; }
+  .navbar-default .navbar-nav > li > a {
+    color: white; }
 
 #splash_panel, #login_panel, #register_panel {
-  /*border: 2px solid black;*/ }
+  /*border: 2px solid black;*/
+  text-align: center;
+  width: 500px;
+  min-height: 300px;
+  border-radius: 5px;
+  margin: 150px auto; }
+  #splash_panel .btn-block, #login_panel .btn-block, #register_panel .btn-block {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    color: white;
+    background-color: #00B5B5; }
 
 #login_panel, #register_panel {
-  display: none; }
+  display: none;
+  position: relative; }
+  #login_panel .form-control, #register_panel .form-control {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 80%; }
+  #login_panel .btn, #register_panel .btn {
+    position: relative;
+    bottom: -10px; }
 
 .movieOutput {
   margin-top: 50px;
   padding-left: 60px; }
 
-.movies_btn {
-  height: 34px; }
+.movies_btn, #add_movie_button .btn {
+  height: 39px;
+  margin-top: 8px; }
 
 #filters {
   display: block; }
   #filters li {
     display: inline-block;
-    border-left: 2px solid black;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
     padding: 5px;
-    cursor: pointer; }
+    cursor: pointer;
+    color: #828282; }
     #filters li:first-of-type {
       border-left: 0px; }
 
@@ -34,8 +62,10 @@ body {
   display: none; }
 
 .img-wrap {
-  width: 250px;
-  position: relative; }
+  position: relative;
+  width: 230px; }
+  .img-wrap img {
+    width: 230px; }
   .img-wrap span {
     position: absolute;
     right: 0px;
@@ -47,6 +77,27 @@ body {
 
 #search_for_movies {
   margin-top: 7px; }
+
+.stars_btn {
+  font-size: 26px;
+  margin: auto;
+  padding-left: 34px; }
+
+.glyphicon-remove {
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  padding-top: 5px;
+  padding-left: 1px;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: white; }
+
+.watched_movies_btn, #add_movie_button .btn {
+  width: 50%;
+  margin-left: 15%;
+  color: white;
+  background-color: #00B5B5; }
 
 /*# sourceMappingURL=main.css.map */
 

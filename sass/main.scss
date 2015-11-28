@@ -1,6 +1,21 @@
 
 body {
-  background-color: gray; 
+  background-color: whitesmoke;
+  padding-bottom: 200px;
+  //if steve will let use backgroun image, use the one below
+  // background-image: url("https://images.unsplash.com/photo-1421757381940-5d269570b21c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=84969eec38041db4a36565671737b5ba");
+  // background-repeat: no-repeat;
+  // background-size: cover;	 
+}
+
+.navbar-default{
+	background-color: #00B5B5;
+	border: none;
+
+	.navbar-nav>li>a{
+		color: white;
+		
+	}
 }
 
 #splash_panel, #login_panel, #register_panel {
@@ -10,10 +25,35 @@ body {
     // border: 20px solid black;
     // margin: 25px;
     // font-size: 25px;
+    text-align: center;
+    width: 500px;
+    min-height: 300px;
+    border-radius: 5px;
+    margin: 150px auto;
+
+    .btn-block{
+    	width: 50%;
+    	margin: auto;
+    	margin-bottom: 10px;
+  		color: white;
+  		background-color: #00B5B5;
+    }
 }
 
 #login_panel, #register_panel {
 	display: none;
+	position: relative;
+
+	.form-control{
+		margin: auto;
+		margin-bottom: 20px;
+		width: 80%;
+	}
+
+	.btn{
+		position: relative;
+		bottom: -10px;
+	}
 }
 
 
@@ -22,8 +62,9 @@ body {
 	padding-left: 60px;
 }
 
-.movies_btn{
-	height: 34px;
+.movies_btn, #add_movie_button .btn{
+	height: 39px;
+	margin-top: 8px;
 }
 
 #filters{
@@ -31,9 +72,10 @@ body {
 
 	li{
 	display: inline-block;
-	border-left: 2px solid black;
+	border-left: 2px solid rgba(0, 0, 0, 0.1);
 	padding: 5px;
 	cursor: pointer;
+	color: #828282;
 
 		&:first-of-type{
 		border-left: 0px;
@@ -56,8 +98,12 @@ body {
 }
 
 .img-wrap{
-	width: 250px;
 	position: relative;
+	width: 230px;
+
+	img{
+		width: 230px;
+	}
 
 	span{
 		position: absolute;
@@ -73,6 +119,30 @@ body {
 
 #search_for_movies{
 	margin-top: 7px;
+}
+
+.stars_btn{
+	font-size: 26px;
+	margin: auto;
+	padding-left: 34px;
+}
+
+.glyphicon-remove{
+	width: 27px;
+    height: 27px;
+    text-align: center;
+    padding-top: 5px;
+    padding-left: 1px;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: white;
+}
+
+.watched_movies_btn, #add_movie_button .btn{
+    width: 50%;
+    margin-left: 15%;
+    color: white;
+    background-color: #00B5B5;
 }
 
 /*# sourceMappingURL=main.css.map */
