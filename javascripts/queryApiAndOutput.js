@@ -84,7 +84,6 @@ return function(){
         populate()
         .then(function(){
 
-          console.log("meh");
 
             //color star ratings
             var hiddenRatings = $(".stars_btn").parent().find(".hiddenSpanRating");
@@ -99,9 +98,15 @@ return function(){
 
               //get rating to reference
               var theRating = hiddenRatings[i].innerHTML;
+                $("#"+parentId).css({"background-color":"goldenrod"});
 
+              for(var x = theRating; x > 0; x -= 1){
+                //this should color stars but it isnt working
+                $("#"+parentId).find(".stars_btn").find("stars-"+theRating).css({"color":"goldenrod"});
 
-             $("#"+parentId).css({"background-color":"goldenrod"});
+                //for testing I colored parent div
+                console.log("the target star ",  $("#"+parentId).find(".stars_btn").find("stars-"+theRating));
+              }
 
             }
           
