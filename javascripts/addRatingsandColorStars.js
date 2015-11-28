@@ -40,7 +40,7 @@ define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"],
 
             for( var i = finalNumber; i > 0; i -= 1){
               //change color of star that was clicked on and every star whose number is less than the one clicked on
-              $(this).parent().find($(".star-"+i)).css({"color": "goldenrod"});      
+              $(this).parent().find($(".star-"+i)).css({"color": "rgb(218, 198, 32)"});      
             }
         });
     }
