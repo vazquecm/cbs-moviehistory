@@ -98,11 +98,13 @@ return function(){
 
               //get rating to reference
               var theRating = hiddenRatings[i].innerHTML;
+
+                //test to see why styling isnt staying
                 $("#"+parentId).css({"background-color":"goldenrod"});
 
               for(var x = theRating; x > 0; x -= 1){
                 //this should color stars but it isnt working
-                $("#"+parentId).find(".stars_btn").find("stars-"+theRating).css({"color":"goldenrod"});
+                $("#"+parentId).find(".stars_btn").find("stars-"+"1").css({"color":"goldenrod"});
 
                 //for testing I colored parent div
                 // console.log("the target star ",  $("#"+parentId).find(".stars_btn").find("stars-"+theRating));
