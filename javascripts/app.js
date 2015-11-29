@@ -108,7 +108,7 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
    });
 
 
-   //handles modal display for movies that exist in firebase when clicking on a movie div
+   //handles modal display for movies when a poster is clicked
     modalOutput();
 
     //handles logout 
