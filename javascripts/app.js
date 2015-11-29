@@ -92,25 +92,48 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
     //handles removing movie from a user's movies object in firebase
    $("body").on("click", ".glyphicon-remove", function(){
 
+      //get title
+      var titleToRemove = $(this).parent().parent().find(".hiddenSpanId").html();
 
-    //get title
-    var titleToRemove = $(this).parent().parent().find(".hiddenSpanId").html();
+      //reference movie location
+      var refOfMovie = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid()+"/movies/"+titleToRemove);
 
-    //reference movie location
-    var refOfMovie = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid()+"/movies/"+titleToRemove);
+      //remove movie from firebase
+      refOfMovie.remove();
 
-    //remove movie from firebase
-    refOfMovie.remove();
+      //remove from page
+      $(this).parent().parent().remove();
 
-    //remove from page
-    $(this).parent().parent().remove();
-
-    $("#existingMovieModal").modal("hide");
+      $("#existingMovieModal").modal("hide");
    });
 
 
    //handles modal display for movies that exist in firebase when clicking on a movie div
     modalOutput();
+
+    //handles logout 
+    /// this functionality allows the user to log out of firebase and then it brings the user to initial login/register page ///
+  $("body").on("click", "#logOut", function(){
+
+    var ref = new Firebase("https://cbs-moviehistory.firebaseio.com");
+
+    ref.unauth();
+
+    generalVariables.setCurrentUid("");
+
+    var authData = ref.getAuth();
+    if (authData) {
+      console.log("User " + authData.uid + " is logged in with " + authData.provider);
+    } else {
+      console.log("User is logged out");
+    }
+
+    require(["hbs!../templates/splash"], function(logInTemplate){
+                  $("#mainContainer").html(logInTemplate());
+                });
+    
+  });
+
 
 
   
