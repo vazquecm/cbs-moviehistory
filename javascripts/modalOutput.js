@@ -1,3 +1,5 @@
+//this module handles modal output when a poster is clicked
+
 define(["jquery","firebase", "q", "generalVariables"], 
   function($, firebase, Q, generalVariables){
 
