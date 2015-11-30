@@ -35,9 +35,6 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
         });
     });
  
-/// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
-    // when search moves button is clicked, run searchUserMovies.js module
-    // THIS IS THE NEW "ALL" BUTTON!!!
     // when user clicks on All, all movies in their DB are displayed
     $("body").on("click", "#all_user_movies", function(){
 
