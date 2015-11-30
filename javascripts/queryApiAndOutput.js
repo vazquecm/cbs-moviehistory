@@ -32,12 +32,8 @@ return function(){
             userMoviesInFirebase = snapshot.val();
           });
 
-          console.log("userMoviesInFirebase>>>>>>>>>>>>>>>>>>>>>>", userMoviesInFirebase);
-
-          // console.log("data returned from api", dataFromApi);
-
           
-
+        //compare titles and see if title from api matches title from firebase
         for(var key in userMoviesInFirebase){
 
           //for every key in uer movies
@@ -57,7 +53,6 @@ return function(){
               }
 
             }
-
 
         }
 
@@ -82,6 +77,7 @@ return function(){
 
         }
 
+        //after data is populated, then run colorStars.js
         populate()
         .then(function(){
           colorStars();

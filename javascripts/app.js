@@ -35,9 +35,6 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
         });
     });
  
-/// ??? # 16 somewhere we need to get off the "add" screen so user knows something happened //
-    // when search moves button is clicked, run searchUserMovies.js module
-    // THIS IS THE NEW "ALL" BUTTON!!!
     // when user clicks on All, all movies in their DB are displayed
     $("body").on("click", "#all_user_movies", function(){
 
@@ -74,12 +71,12 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
 
       searchUserMovies()
       .then(function(){
-    //this calls a module that filters for only 5 star favorites and then output them 
-    console.log("Made it to fiveStars calls");
-        fiveStars()
-    console.log("back from fiveStars call");
+      //this calls a module that filters for only 5 star favorites and then output them 
+        console.log("Made it to fiveStars calls");
+            fiveStars()
+        console.log("back from fiveStars call");
+        });
       });
-    });
 
 
     //handles functionality for changing unwatched movies to watched
