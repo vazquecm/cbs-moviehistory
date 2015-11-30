@@ -77,6 +77,7 @@ return function(){
 
         }
 
+        //after data is populated, then run colorStars.js
         populate()
         .then(function(){
           colorStars();

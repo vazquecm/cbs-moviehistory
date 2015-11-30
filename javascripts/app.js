@@ -71,12 +71,12 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
 
       searchUserMovies()
       .then(function(){
-    //this calls a module that filters for only 5 star favorites and then output them 
-    console.log("Made it to fiveStars calls");
-        fiveStars()
-    console.log("back from fiveStars call");
+      //this calls a module that filters for only 5 star favorites and then output them 
+        console.log("Made it to fiveStars calls");
+            fiveStars()
+        console.log("back from fiveStars call");
+        });
       });
-    });
 
 
     //handles functionality for changing unwatched movies to watched
