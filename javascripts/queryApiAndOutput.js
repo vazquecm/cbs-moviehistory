@@ -32,7 +32,7 @@ return function(){
             userMoviesInFirebase = snapshot.val();
           });
 
-          // console.log("userMoviesInFirebase>>>>>>>>>>>>>>>>>>>>>>", userMoviesInFirebase);
+          console.log("userMoviesInFirebase>>>>>>>>>>>>>>>>>>>>>>", userMoviesInFirebase);
 
           // console.log("data returned from api", dataFromApi);
 
@@ -68,6 +68,7 @@ return function(){
         //give matched object to hbs template
          require(["hbs!../templates/matchedMovies"], function(template){
             $("#main_ouput").html(template(matchedMovies));
+            defer.resolve();
           });
 
         //give dataFromApi to another hbs template
@@ -75,7 +76,7 @@ return function(){
             $("#main_ouput").append(template(dataFromApi));
           });
 
-          defer.resolve();
+          
 
          return defer.promise;
 
@@ -83,34 +84,7 @@ return function(){
 
         populate()
         .then(function(){
-
-
-            //color star ratings
-            var hiddenRatings = $(".stars_btn").parent().find(".hiddenSpanRating");
-
-            console.log("hiddenRatings ", hiddenRatings);
-
-            for(var i = 0; i < hiddenRatings.length; i++){
-              // console.log("current span parent ", hiddenRatings[i].parentNode);
-
-              //get parentNode id
-              var parentId = hiddenRatings[i].parentNode.getAttribute("id");
-
-              //get rating to reference
-              var theRating = hiddenRatings[i].innerHTML;
-
-                //test to see why styling isnt staying
-                $("#"+parentId).css({"background-color":"goldenrod"});
-
-              for(var x = theRating; x > 0; x -= 1){
-                //this should color stars but it isnt working
-                $("#"+parentId).find(".stars_btn").find("stars-"+"1").css({"color":"goldenrod"});
-
-                //for testing I colored parent div
-                // console.log("the target star ",  $("#"+parentId).find(".stars_btn").find("stars-"+theRating));
-              }
-
-            }
+          colorStars();
           
         });
 
