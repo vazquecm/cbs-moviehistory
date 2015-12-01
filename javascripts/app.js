@@ -63,7 +63,7 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
     });  
 
 // if the favorites filter is clicked, then show all movies on the users DB that have a 5 star rating
-    $("body").on("click", "#user_favorites", function(){
+    $("body").on("change", "#range", function(){
 
       console.log("heard favorite click");
      // checking for 5 star rating star and outputting movie favorites

@@ -7,6 +7,8 @@ define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"],
 
 		//get all elements (spans) with the hiddenSpanRating class and put them into an array
 		var spanArray = $(".hiddenSpanRating");
+		var rangeValue = parseInt($("#range").val());
+		console.log("range value ", rangeValue);
 
 		//loop over span array 
 		for(var i = 0; i < spanArray.length; i++){
@@ -21,7 +23,7 @@ define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"],
 			var parentNode = spanArray[i].parentNode.getAttribute("id");
 
 			//if the current html of current span is equal to 5 (we must convert the string to a number)
-			if(parseInt(spanArray[i].innerHTML) === 5){
+			if(parseInt(spanArray[i].innerHTML) === rangeValue){
 
 				console.log("this should show ");
 
