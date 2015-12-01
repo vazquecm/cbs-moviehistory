@@ -73,7 +73,7 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
       .then(function(){
       //this calls a module that filters for only 5 star favorites and then output them 
         console.log("Made it to fiveStars calls");
-            fiveStars()
+            fiveStars();
         console.log("back from fiveStars call");
         });
       });

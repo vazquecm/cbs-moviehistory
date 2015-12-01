@@ -72,7 +72,7 @@ body {
 }
 
 #filters{
-	display: block;
+	display: inline-block;
 
 	li{
 	display: inline-block;
@@ -84,6 +84,7 @@ body {
 		&:first-of-type{
 		border-left: 0px;
 		}
+
 	}
 }
 
@@ -150,6 +151,13 @@ body {
 .emph{
 	font-weight: bold;
 }
+
+input[type=range] {
+    display: block;
+    width: 100%;
+}
+
+
 
 /*# sourceMappingURL=main.css.map */
 

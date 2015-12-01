@@ -61,5 +61,5 @@ function ($, firebase, Q, generalVariables) {
 
 		//return promise state
 		return deferred.promise;
-	}
+	};
 });

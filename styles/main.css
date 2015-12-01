@@ -47,7 +47,7 @@ body {
   margin-top: 8px; }
 
 #filters {
-  display: block; }
+  display: inline-block; }
   #filters li {
     display: inline-block;
     border-left: 2px solid rgba(0, 0, 0, 0.1);
@@ -105,6 +105,10 @@ body {
 
 .emph {
   font-weight: bold; }
+
+input[type=range] {
+  display: block;
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */
 

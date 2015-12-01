@@ -10,7 +10,7 @@ return function(){
   		.then(function(){
 
       /// this is a require call that includes a "promise" from searchMovies.hbs ////  
-        return populateUserMovies()
+        return populateUserMovies();
         
        })
 
@@ -21,5 +21,5 @@ return function(){
         colorStars();
 
        });
-   }
+   };
 });

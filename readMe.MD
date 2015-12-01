@@ -1,9 +1,14 @@
 CBS Movie History
 
-Template for splash.hbs complete. The file has the splash, login, and register moqup included within it. Some css was added just for visualization that will have to be changed over to sass (which I don't know how to use yet).  
+Template for splash.hbs complete. The file has the splash, login, and register moqup included within it.  
 
-Most of curriculum in this branch has been accomplished.  What needs to be done is the add button needs to show user that movie has been added to their list instead of just sitting there.  
+Most of curriculum in this branch has been accomplished.  
 
-The delete button needs to function for user to remove a movie from their list.  
+The add button shows the user that movie has been added to their list.  
+
+Now has a slide range that will show the users rated movies from 0-10, zero showing all the movies.      
+
+The delete button works in that the functionality deletes the movie off the screen but leaves the movie in the database.    
+
   
     
