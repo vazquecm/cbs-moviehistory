@@ -33,6 +33,8 @@ define(["jquery", "firebase", "q", "bootstrapJs", "generalVariables"],
               "rating": finalNumber
             });
 
+            console.log("this is ", $(this).parent().parent().find(".hiddenSpanRating").html(finalNumber));
+
             //Change css styles to be applied (in order for this not to be buggy and for css of stars to be updated correctly without clicking on "search movies" again, see allSearchFunctionality.js)
 
             //clear colors in order to update colors with for loop
