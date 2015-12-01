@@ -41,8 +41,16 @@ return function(){
             //loop through keys returned from api to get matches
             for(var apikeys in dataFromApi){
 
+              if(userMoviesInFirebase[key].movieName === dataFromApi[apikeys].Title && userMoviesInFirebase[key].deleted === true) {
+                  delete dataFromApi[apikeys];
+                  // delete userMoviesInFirebase[key];
+                console.log("the movie should be delete ");
+               }
+
+          
+
               //if a movie title from firebase equals title returned from api
-              if(userMoviesInFirebase[key].movieName === dataFromApi[apikeys].Title){
+               else if(userMoviesInFirebase[key].movieName === dataFromApi[apikeys].Title) {
                 console.log("we have a match ", userMoviesInFirebase[key]);
 
                 //store current movie iside matched movies

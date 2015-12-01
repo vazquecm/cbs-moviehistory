@@ -93,10 +93,21 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
       var titleToRemove = $(this).parent().parent().find(".hiddenSpanId").html();
 
       //reference movie location
-      var refOfMovie = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid()+"/movies/"+titleToRemove);
+      var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+generalVariables.getCurrentUid());
+console.log("ref ", ref);
+      // //remove movie from firebase
+      // refOfMovie.remove();
 
-      //remove movie from firebase
-      refOfMovie.remove();
+      // if user selected the movie to delete, change the key value on delete to false
+       var movieRef = ref.child("movies");
+       var movieToDeleteRef = movieRef.child(titleToRemove);
+       movieToDeleteRef.update({
+         "deleted": true
+       });
+
+       console.log("obj for deleted movie ", movieRef);
+
+
 
       //remove from page
       $(this).parent().parent().remove();

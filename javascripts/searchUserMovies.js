@@ -15,16 +15,27 @@ function ($, firebase, Q, generalVariables) {
 		//get current uid of user
 		var currentUid = generalVariables.getCurrentUid();
 
-		console.log("currentUid ", currentUid);
-
 		//reference to firebase data
 		var ref = new Firebase("https://cbs-moviehistory.firebaseio.com/Users/"+currentUid+"/movies");
 
 		//every time the module runs, do the following with the data in ref
 		ref.on("value", function(snapshot) {
+		var allMovies = {};
+		for (var key in snapshot.val())	{
+			if (snapshot.val()[key]["deleted"] === true) {
+				console.log("this will be deleted ");
+				delete snapshot.val()[key];
+			}
+			else {
+				allMovies[key] = snapshot.val()[key];
+				console.log("this will be included");
+			}
+			// console.log("current movie is ", snapshot.val()[key]);
+		}
+
 
   			//set the current user movies
-  			generalVariables.setCurrentUserMovies(snapshot.val());
+  			generalVariables.setCurrentUserMovies(allMovies);
 
 			//resolve data returned
 			deferred.resolve();

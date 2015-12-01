@@ -51,8 +51,8 @@ function ($, firebase, Q, generalVariables) {
     				rating: 0,
     				watched: false,
     				yearReleased: year,
-    				imdbID: imdbID
-
+    				imdbID: imdbID,
+    				deleted: false
     					
     		});
 		
