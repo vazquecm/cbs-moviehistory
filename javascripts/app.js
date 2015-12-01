@@ -66,9 +66,15 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
     $("body").on("change", "#range", function(){
 
       console.log("heard favorite click");
-     // checking for 5 star rating star and outputting movie favorites
-             //hide anything with watched class
-
+      if ($("#range").val() === "0") {
+      // if range is zero then all movies in the user db should be displayed
+        console.log("everything should show");
+        allSearchFunctionality();
+  
+      }
+      else {
+     // checking for 1-10 star rating star and outputting movie favorites
+ 
       searchUserMovies()
       .then(function(){
       //this calls a module that filters for only 5 star favorites and then output them 
@@ -76,6 +82,7 @@ define(["jquery", "firebase", "lodash", "q", "setCurrentMovie", "loginandRegistr
             fiveStars();
         console.log("back from fiveStars call");
         });
+       }
       });
 
 
