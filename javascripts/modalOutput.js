@@ -76,6 +76,6 @@ define(["jquery","firebase", "q", "generalVariables"],
 
         });
       
-    }
+    };
 
-})
+});

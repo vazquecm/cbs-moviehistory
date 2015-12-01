@@ -47,7 +47,7 @@ body {
   margin-top: 8px; }
 
 #filters {
-  display: block; }
+  display: inline-block; }
   #filters li {
     display: inline-block;
     border-left: 2px solid rgba(0, 0, 0, 0.1);
@@ -108,7 +108,8 @@ body {
   font-weight: bold; }
 
 input[type=range] {
-  width: 10%; }
+  display: block;
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */
 

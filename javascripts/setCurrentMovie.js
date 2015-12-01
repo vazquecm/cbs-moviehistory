@@ -10,6 +10,6 @@ define(["jquery", "firebase", "q", "generalVariables"],
 
 
 		return deferred.promise;
-	}
+	};
 
 });
