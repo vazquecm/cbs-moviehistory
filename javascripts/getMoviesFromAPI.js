@@ -75,6 +75,9 @@ function ($, firebase, Q, _) {
 
 		 	//resolve data returned
 		 	deferred.resolve(searchListObject);
+
+		 	//clear search 
+		 	// $("#search_for_movies").val(" ");
 		 });
 
 		//return promise state  sends us back to app.js where promise is first called ///
