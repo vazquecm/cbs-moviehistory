@@ -1,14 +1,24 @@
-CBS Movie History
+#NSS Group Project
 
-Template for splash.hbs complete. The file has the splash, login, and register moqup included within it.  
+##CBS Movie History
 
-Most of curriculum in this branch has been accomplished.  
+ - Movie History is created by Ben Bledsoe, Stephanie Krause, and Carmen Vasquez.
 
-The add button shows the user that movie has been added to their list.  
+ - Requirements
 
-Now has a slide range that will show the users rated movies from 0-10, zero showing all the movies.      
+1. Must have the ability to register a user in Firebase
+1. Must have the ability to log in
+1. You must use Firebase to store movies
+1. You must be able to add movies
+1. You must be able to remove movies
+1. Each movie must have the following properties
+1. Movie name
+1. Year released
+1. An array of major actors
+1. An integer rating of 1-5
+1. A boolean value that, if true, means that you have Watched the movie
+1. You must be using Grunt to automate Javascript testing
+1. You must be using Grunt to automate SASS compilation
 
-The delete button works in that the functionality deletes the movie off the screen but leaves the movie in the database.    
 
-  
-    
+
