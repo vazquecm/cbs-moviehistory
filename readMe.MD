@@ -2,7 +2,7 @@
 
 ##CBS Movie History
 
- - Movie History is created by Ben Bledsoe, Stephanie Krause, and Carmen Vasquez.
+ - Movie History is created by Ben Bledsoe, Stephanie Krause, and Carmen Vazquez-Marin.
 
  - Requirements
 
